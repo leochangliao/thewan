@@ -1,3 +1,8 @@
+# Note
+This is my practice project using Angular 8, and will be or already live on https://thewan.ca/
+
+Also, this is my first project @ github, very exciting! :-)
+
 # Thewan
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.0.
