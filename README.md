@@ -1,12 +1,13 @@
 # Note
 [2019-08-16]
+
 This is my practice project using Angular 8, and will be or already live on https://thewan.ca/
 
 Project planning:
 - header,footer,body components
 - resume, portfolio, contact, bookmart (private and public) pages
 - custom modal component to handle pop-out message and maybe for showing portfolio details
-- integrate D3.js into resume page to show chart
+- integrate D3.js into resume page to show charts
 - editable bookmark items
 - prepare APIs at firebase for data storage (maybe)
 
