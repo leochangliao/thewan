@@ -4,3 +4,8 @@
 html, body {
     font-family: 'Raleway', sans-serif;
 }
+
+a {
+    cursor: pointer;
+    cursor: hand; /* IE */
+}

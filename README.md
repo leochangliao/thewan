@@ -15,7 +15,8 @@ Project planning:
 - prepare APIs at firebase for data storage (maybe)
 
 # Thewan
-Please use Node version 10.9 and above.
+Node version 10.9+
+Boostrap 4.0+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.0.
 

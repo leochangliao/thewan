@@ -1,0 +1,29 @@
+.logo {
+    margin: 2em;
+    img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+    }
+}
+.hover-rotate{
+	transition:all 10s ease;
+}
+.hover-rotate:hover{
+	-moz-transform:rotate(330deg);
+	-webkit-transform:rotate(330deg);
+	transform:rotate(330deg);
+}
+.hover-rotate:active,.hover-rotate:focus{
+	-moz-transform:scale(2.5);
+	-webkit-transform:scale(2.5);
+	transform:scale(2.5);
+}
+.logo-small {
+    img {
+        width:50px;
+        height:50px;
+        padding:5px;
+        margin-top:3px;
+    }
+}
