@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
-import { UtilityService } from './shared/utility.service';
+
 
 @NgModule({
   declarations: [
@@ -15,7 +15,7 @@ import { UtilityService } from './shared/utility.service';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [UtilityService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

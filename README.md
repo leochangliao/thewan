@@ -1,10 +1,13 @@
 # Note
-[2019-08-16]
+This is my practice project using Angular 8 to demo what I've learned from https://www.udemy.com/the-complete-guide-to-angular-2
 
-This is my practice project using Angular 8, and will be or already live on https://thewan.ca/
+Project will be or already live on:
+https://thewan.ca/
 
 Project planning:
 - header,footer,body components
+- preparing settings module, utility.service etc.
+- adding dynamic body background for each months
 - resume, portfolio, contact, bookmart (private and public) pages
 - custom modal component to handle pop-out message and maybe for showing portfolio details
 - integrate D3.js into resume page to show charts
