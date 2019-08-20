@@ -1,1 +1,44 @@
-<p>portfolio works!</p>
+<h3><b>My Journy!</b></h3>
+<span class="loader" *ngIf="isLoading"></span>
+<div *ngIf="errorMessage">
+    <p class="alert alert-danger">{{errorMessage}}</p>
+</div>
+<div *ngIf="portfolio.length && !isLoading" class="row">
+    <div class="col-md-4 p-none" *ngFor="let p of portfolio">
+        <div class="bg-white auto-opacity mvs mhm pam fixed-height">
+            <img [src]="p.img_url" />
+            <h5 class="mas"><b>{{p.name}}</b></h5>
+            <p>
+                <a [href]="p.site_url" target="_blank">{{p.site_url}}</a>
+            </p>
+            <div class="pam phn">
+                <table>
+                    <tr>
+                        <td><img src="assets/images/icon/calendar.png" class="status-icon"></td>
+                        <td>{{p.detail?.date_info}}</td>
+                    </tr>
+                    <tr>
+                        <td><img src="assets/images/icon/script2.png" class="status-icon"></td>
+                        <td>{{p.detail?.framework}}</td>
+                    </tr>
+                    <tr>
+                        <td><img src="assets/images/icon/_github-512.png" class="status-icon"></td>
+                        <td>
+                            <div *ngIf="p.detail?.source?.url;else noSource">
+                                <a [href]="p.detail?.source?.url" target="_blank">{{p.detail?.source?.text}}</a>
+                            </div>
+                            <ng-template #noSource>
+                               {{p.detail?.source || 'N/A'}}
+                            </ng-template>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="assets/images/icon/checklist5.png" class="status-icon"></td>
+                        <td>{{p.detail?.comment}}</td>
+                    </tr>          
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

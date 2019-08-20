@@ -29,12 +29,16 @@
 }
 .navbar li {
     padding: .5em 1em;
-    &.active {
-        background-color: #eaeaea;
-    }
-}
-.navbar li:hover {
-    background-color: #ffffff;
     cursor: pointer;
     cursor: hand;
+    &.active {
+        background-color: white;
+        a {
+            color: #fa7c00;
+        }
+    }
+    &:hover {
+        color: black;
+        background-color: white;
+    }
 }

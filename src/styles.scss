@@ -10,17 +10,34 @@ a {
     cursor: hand; /* IE */
 }
 
-.page-area {
+.white-bg-text-area {
     background-color: rgba(255,255,255,.6);
     color: black;
     transition: .5s all ease;
+    &:hover{
+        background-color: rgba(255,255,255,.9);
+    }
 }
-.page-area:hover{
-    background-color: rgba(255,255,255,.9);
+.auto-opacity {
+    opacity: 0.8;
+    transition: .5s all ease;
+    &:hover {
+        opacity: 1;
+    }
 }
 /* padding and margin */
 .p-none {
     padding: 0;
+}
+.pas {
+    padding: .5em;
+}
+.pam {
+    padding: 1em;
+}
+.phn {
+    padding-top: 0;
+    padding-bottom: 0;
 }
 .phs {
     padding-top: .5em;
@@ -37,11 +54,28 @@ a {
 .m-none {
     margin: 0;
 }
+.mvs {
+    margin-left: .5em;
+    margin-right: .5em;
+}
+.mhm {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
 .mhl {
     margin-top: 2em;
     margin-bottom: 2em;
 }
+.mas {
+    margin: .5em;
+}
+.mam {
+    margin: 1em;
+}
 /* bg colors */
+.bg-white {
+    background-color: white;
+}
 .bg-white-80 {
     background-color: rgba(255,255,255,0.8);
 }
@@ -52,4 +86,17 @@ a {
 /* animation */
 .animation {
     transition: all 1s ease;
+}
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+	animation: spin 2s linear infinite;
+	display: inline-block;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

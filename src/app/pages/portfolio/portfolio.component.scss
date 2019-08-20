@@ -1,0 +1,26 @@
+img {
+    width: 100%;
+    height: 230px;
+    &.status-icon {
+        width: 25px;
+        height: 25px;
+        vertical-align: text-bottom;
+    }
+}
+table {
+    width: 100%;
+    tr {
+        td {
+            text-align: left;
+            padding: .3em;
+        }
+        td:first-child {
+            vertical-align: top;
+            width: 50px;
+        }
+    }
+}
+.fixed-height {
+    height: 520px;
+    overflow-y: auto;
+}
