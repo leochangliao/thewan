@@ -9,3 +9,47 @@ a {
     cursor: pointer;
     cursor: hand; /* IE */
 }
+
+.page-area {
+    background-color: rgba(255,255,255,.6);
+    color: black;
+    transition: .5s all ease;
+}
+.page-area:hover{
+    background-color: rgba(255,255,255,.9);
+}
+/* padding and margin */
+.p-none {
+    padding: 0;
+}
+.phs {
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
+.phl {
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+.pvm{
+    padding-left: 1em;
+    padding-right: 1em;
+}
+.m-none {
+    margin: 0;
+}
+.mhl {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+/* bg colors */
+.bg-white-80 {
+    background-color: rgba(255,255,255,0.8);
+}
+.bg-white-50 {
+    background-color: rgba(255,255,255, 0.5);
+}
+
+/* animation */
+.animation {
+    transition: all 1s ease;
+}

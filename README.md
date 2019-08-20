@@ -16,7 +16,7 @@ Project planning:
 
 # Thewan
 Node version 10.9+
-Boostrap 4.0+
+Boostrap 4.3.1+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.0.
 
