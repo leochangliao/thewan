@@ -6,7 +6,7 @@
 <div *ngIf="portfolio.length && !isLoading" class="row">
     <div class="col-xl-4 col-lg-6 col-md-12 p-none" *ngFor="let p of portfolio">
         <div class="bg-white auto-opacity mvs mhm pam fixed-height">
-            <img class="site-screenshot" [src]="p.img_url" />
+            <div class="site-screenshot-div" [ngStyle]="{'background-image': 'url(' + p.img_url + ')'}"></div>
             <h5 class="mas"><b>{{p.name}}</b></h5>
             <p>
                 <a [href]="p.site_url" target="_blank">{{p.site_url}}</a>
@@ -14,7 +14,9 @@
             <div class="pam phn">
                 <table>
                     <tr>
-                        <td><img src="assets/images/icon/calendar.png" class="status-icon"></td>
+                        <td>
+                            <img src="assets/images/icon/calendar.png" class="status-icon">
+                        </td>
                         <td>{{p.detail?.date_info}}</td>
                     </tr>
                     <tr>
