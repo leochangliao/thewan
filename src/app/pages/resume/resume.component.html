@@ -11,23 +11,26 @@
             <div *ngFor="let exp of resumeData.experience" class="mbl">
                 <h3 class="dark-gray"><b>{{exp.company}}</b></h3>
                 <div><b>{{exp.title}}</b> <span class="badge mvs" [ngClass]="{'badge-success':exp.duration?.isPresent, 'badge-info':!exp.duration?.isPresent}">{{exp.duration?.display}}</span></div>
-                <ul class="mtm prm">
-                    <li *ngFor="let task of exp.tasks">
-                        <div *ngIf="task.url; else taskDisplayOnly">
-                            {{task.name}} - <a [href]="task.url" target="_blank">{{task.url}}</a>
+                <div class="company-tasks">
+                    <ul class="mtm prm">
+                        <li *ngFor="let task of exp.tasks">
+                            <div *ngIf="task.url; else taskDisplayOnly">
+                                {{task.name}} - <a [href]="task.url" target="_blank">{{task.url}}</a>
+                            </div>
+                            <ng-template #taskDisplayOnly>
+                                {{task.display}}
+                            </ng-template>
+                        </li>
+                    </ul>
+                    <div class="mtm plm" *ngIf="exp.clients">
+                        <div *ngFor="let client of exp.clients;let i = index">
+                            <div><span class="dark-gray"><b>{{client.company}}</b></span></div>
+                            <div>{{client.title}} <span class="badge badge-secondary mvs">{{client.duration?.display}}</span></div>
+                            <ul class="prm">
+                                <li  *ngFor="let cTask of client.tasks">{{cTask.display}}</li>
+                            </ul>
+                            <hr *ngIf="i != exp.clients.length-1">
                         </div>
-                        <ng-template #taskDisplayOnly>
-                            {{task.display}}
-                        </ng-template>
-                    </li>
-                </ul>
-                <div class="mtm plm" *ngIf="exp.clients">
-                    <div *ngFor="let client of exp.clients;let i = index">
-                        <div><span class="dark-gray"><b>{{client.company}}</b></span> <span class="badge badge-secondary mvs">{{client.duration?.display}}</span></div>
-                        <ul class="prm">
-                            <li  *ngFor="let cTask of client.tasks">{{cTask.display}}</li>
-                        </ul>
-                        <hr *ngIf="i != exp.clients.length-1">
                     </div>
                 </div>
             </div>
