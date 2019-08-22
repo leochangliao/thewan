@@ -1,88 +1,51 @@
 <h3 class="pg-title"><b>- Journey -</b></h3>
-<div class="row mam pal mtl text-left bg-white auto-opacity" (mouseover)="!isReady && setSkillBar()">
+<span class="loader" *ngIf="isLoading"></span>
+<div *ngIf="errorMessage">
+    <p class="alert alert-danger">{{errorMessage}}</p>
+</div>
+<div *ngIf="!isLoading && resumeData.experience?.length" class="row mam pal mtl text-left bg-white auto-opacity" (mouseover)="!isReady && setSkillBar()">
     <div class="col-md-8">
         <h4>Experience</h4>
         <span class="under-line-short"></span>
         <div class="mhl phs">
-            <div class="mbl">
-                <h4 class="dark-gray"><b>Freelancer</b></h4>
-                <div><b>Website / Application Developer</b> <span class="badge badge-success mvs">Jan 2003 – Present</span></div>
+            <div *ngFor="let exp of resumeData.experience" class="mbl">
+                <h4 class="dark-gray"><b>{{exp.company}}</b></h4>
+                <div><b>{{exp.title}}</b> <span class="badge mvs" [ngClass]="{'badge-success':exp.duration?.isPresent, 'badge-info':!exp.duration?.isPresent}">{{exp.duration?.display}}</span></div>
                 <ul class="mtm prm">
-                    <li>Portfolio - <a routerLink="/portfolio">https://thewan.ca/</a></li>
-                    <li>Linkedin - <a href="https://www.linkedin.com/in/leocl/" target="_blank">https://www.linkedin.com/in/leocl/</a></li>
-                    <li>Github - <a href="https://github.com/leochangliao" target="_blank">https://github.com/leochangliao</a></li>
+                    <li *ngFor="let task of exp.tasks">
+                        <div *ngIf="task.url; else taskDisplayOnly">
+                            {{task.name}} - <a [href]="task.url" target="_blank">{{task.url}}</a>
+                        </div>
+                        <ng-template #taskDisplayOnly>
+                            {{task.display}}
+                        </ng-template>
+                    </li>
                 </ul>
-            </div>
-            <div class="mbl">
-                <h4 class="mtm dark-gray"><b>mobileLIVE Inc.</b></h4>
-                <div><b>Software Developer</b> <span class="badge badge-info mvs">Oct 2013 – Aug 2019</span></div>
-                <div class="mtm plm">
-                    <div>Client Site - ROGERS <span class="badge badge-secondary mvs">Apr 2019 – Aug 2019</span></div>
-                    <ul class="prm">
-                        <li>Developing, debugging existing AngularJS components </li>
-                        <li>Contribute in Angular7 upliftment tasks</li>
-                    </ul>
-                    <hr>
+                <div class="mtm plm" *ngIf="exp.clients">
+                    <div *ngFor="let client of exp.clients;let i = index">
+                        <div><span class="dark-gray"><b>{{client.company}}</b></span> <span class="badge badge-secondary mvs">{{client.duration?.display}}</span></div>
+                        <ul class="prm">
+                            <li  *ngFor="let cTask of client.tasks">{{cTask.display}}</li>
+                        </ul>
+                        <hr *ngIf="i != exp.clients.length-1">
+                    </div>
                 </div>
-                <div class="mtm plm">
-                    <div>Client Site - ZCOM / ERICSSON <span class="badge badge-secondary mvs">Jun 2015 – Jan 2019</span></div>
-                    <ul class="prm">
-                        <li>Focused on AngularJS </li>
-                        <li>Creating, developing and debugging reusable UI components</li>
-                        <li>Preparing automation using Protrator for demo and testing purpose</li>
-                    </ul>
-                    <hr>
-                </div>
-                <div class="plm">
-                    <div>Head Office - Richmond Hill <span class="badge badge-secondary mvs">Oct 2013 – May 2015</span></div>
-                    <ul class="prm">
-                        <li>Developing, maintaining and improving company website </li>
-                        <li>Integrate CATS Applicant Tracking System to several web application for internal use</li>
-                        <li>Initiate client project using Angular JS</li>
-                        <li>Preparing graphical chart using D3 JS</li>
-                        <li>Perform LTE Device Certification, Pre-launch Evaluation, Acceptance Test, and Software Regression Test on MMS, FDP, FCP, PTT, Video Optimization, LBS and Roam.</li>
-                        <li>Operate computers, servers, test equipment, diagnosis software and test automation software (e.g., Spirent, Anritsu, Rohde & Schwarz, ADM, QXDM, Wireshark etc.</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="mbl">
-                <h4 class="mtm dark-gray"><b>TELUS</b></h4>
-                <div><b>QA / Application Developer</b>  <span class="badge badge-info mvs">Jun 2007 – Jan 2012</span></div>
-                <ul class="mtm prm">
-                    <li>Hands on experienced on wireless handset issue debugging for HSPA, CDMA and iDEN devices.</li>
-                    <li>Guiding project manager to understand issues, and assist OEMs to resolve issues.</li>
-                    <li>Develop and evolve the test plans pertaining to the handset client applications (e.g., MMS, WAP, OMA download, J2ME, Video, LBS).</li>
-                    <li>Execute hardware, radio and roaming related test plans (e.g. DiROAM, PLMN list, MCC list, CCA updates.)</li>
-                    <li>Operate computers, servers, test equipment, diagnosis software and test automation software (e.g., JDTS, IT3 Prove, QXDM, UDM, QPST, Android Webkit, BDM, TOMCAT Server etc.)</li>
-                </ul>
             </div>
         </div>
     </div>
     <div class="col-md-4">
         <h4>Skills</h4>
         <span class="under-line-short"></span>
-        <div class="mhl phs">
-            I am familiar with<br/>
-            <div class="skill-bar bar-95" [ngClass]="{'bar-zero': !isReady}">HTML5 <span class="float-right" [ngClass]="{'bar-percent-ready':isReady}">95%</span></div>
-            <div class="skill-bar bar-95" [ngClass]="{'bar-zero': !isReady}">CSS3 <span class="float-right" [ngClass]="{'bar-percent-ready':isReady}">95%</span></div>
-            <div class="skill-bar bar-90" [ngClass]="{'bar-zero': !isReady}">SCSS <span class="float-right" [ngClass]="{'bar-percent-ready':isReady}">90%</span></div>
-            <div class="skill-bar bar-90" [ngClass]="{'bar-zero': !isReady}">JavaScript <span class="float-right" [ngClass]="{'bar-percent-ready':isReady}">90%</span></div>
-            <div class="skill-bar bar-80" [ngClass]="{'bar-zero': !isReady}">jQuery <span class="float-right" [ngClass]="{'bar-percent-ready':isReady}">80%</span></div>
-            <div class="skill-bar bar-70" [ngClass]="{'bar-zero': !isReady}">NodeJS <span class="float-right" [ngClass]="{'bar-percent-ready':isReady}">70%</span></div>
-            <div class="skill-bar bar-85" [ngClass]="{'bar-zero': !isReady}">PHP <span class="float-right" [ngClass]="{'bar-percent-ready':isReady}">85%</span></div>
-            <h6 class="mtm">Framework</h6>
-            <div class="skill-bar bg-blue bar-95" [ngClass]="{'bar-zero': !isReady}">AngularJS <span class="float-right" [ngClass]="{'bar-percent-ready':isReady}">95%</span></div>
-            <div class="skill-bar bg-blue bar-80" [ngClass]="{'bar-zero': !isReady}">Angular8 <span class="float-right" [ngClass]="{'bar-percent-ready':isReady}">80%</span></div>
-            <div class="skill-bar bg-blue bar-75" [ngClass]="{'bar-zero': !isReady}">Ionic <span class="float-right" [ngClass]="{'bar-percent-ready':isReady}">75%</span></div>
-            <div class="skill-bar bg-blue bar-70" [ngClass]="{'bar-zero': !isReady}">React <span class="float-right" [ngClass]="{'bar-percent-ready':isReady}">70%</span></div>
-            <div class="skill-bar bg-blue bar-60" [ngClass]="{'bar-zero': !isReady}">React Native<span class="float-right" [ngClass]="{'bar-percent-ready':isReady}">60%</span></div>
-            <h6 class="mtm">Miscellaneous</h6>
-            <div class="skill-bar bg-orange bar-70" [ngClass]="{'bar-zero': !isReady}">Photoshop <span class="float-right" [ngClass]="{'bar-percent-ready':isReady}">70%</span></div>
-            <div class="skill-bar bg-orange bar-60" [ngClass]="{'bar-zero': !isReady}">Objective C <span class="float-right" [ngClass]="{'bar-percent-ready':isReady}">60%</span></div>
-            <div class="skill-bar bg-orange bar-85" [ngClass]="{'bar-zero': !isReady}">Perl <span class="float-right" [ngClass]="{'bar-percent-ready':isReady}">75%</span></div>
-            <div class="skill-bar bg-orange bar-80" [ngClass]="{'bar-zero': !isReady}">Git Command line <span class="float-right" [ngClass]="{'bar-percent-ready':isReady}">80%</span></div>
-            <div class="skill-bar bg-orange bar-70" [ngClass]="{'bar-zero': !isReady}">Unix <span class="float-right" [ngClass]="{'bar-percent-ready':isReady}">70%</span></div>
-            <div class="skill-bar bg-orange bar-85" [ngClass]="{'bar-zero': !isReady}">Visual C++<span class="float-right" [ngClass]="{'bar-percent-ready':isReady}">85%</span></div>
+        <div class="mhm phs">
+            <div *ngFor="let skill of resumeData.skill; let i = index">
+                <div class="mtm">{{skill.group}}</div>
+                <div *ngFor="let s of skill.skills"
+                     class="skill-bar bar-{{s.level}}"
+                     [ngClass]="{'bar-zero': !isReady, 'bg-blue': i==1, 'bg-orange': i==2 }">
+                     {{s.name}}
+                     <span class="float-right" [ngClass]="{'bar-percent-ready':isReady}">{{s.level}}%</span>
+                </div>
+            </div>
         </div>
     </div>
 </div>

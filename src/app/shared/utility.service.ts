@@ -12,11 +12,15 @@ export class UtilityService {
     constructor (private settings:AppSettings,
                  private http:HttpClient) {}
 
-    getMonthlyBackgourndImage () {
+    getMonthlyBackgourndImage() {
         return this.settings.imagePath + 'wallpaper/wallpaper-month-' + (this.today.getMonth() + 1) + '.jpg';
     }
 
-    getPortfolio ():Observable<any> {
+    getPortfolio():Observable<any> {
         return this.http.get(this.settings.apiUrls.portfolio);
+    }
+
+    getResume():Observable<any> {
+        return this.http.get(this.settings.apiUrls.resume);
     }
 }
