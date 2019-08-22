@@ -4,8 +4,8 @@ import {Injectable } from '@angular/core';
 
 export class AppSettings {
     apiUrls:any = {
-        portfolio : 'http://thewan.ca/api/portfolio.php',
-        skills: 'http://thewan.ca/api/skills.php'
+        portfolio : 'http://api.thewan.ca/portfolio.php',
+        skills: 'http://api.thewan.ca/resume.php'
     };
     imagePath:string = 'assets/images/';
 }
