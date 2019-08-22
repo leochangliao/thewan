@@ -29,14 +29,14 @@ export class UtilityService {
     }
 
     /**
-     * return cache data from HTTP GET request if aplicable
+     * return cache data from HTTP GET request if applicable
      * @param handler get request data object
      * @param url get request url
      */
     private getHttpRequest(handler:any, url:string):Observable<any> {
-        if(handler.data){
+        if (handler.data) {
             return of(handler.data);
-        } else if(handler.observable){
+        } else if (handler.observable) {
             return handler.observable;
         } else {
             handler.observable = this.http.get<any>(url)

@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
+  postData:any = {
+    username:"",
+    email:"",
+    message:""
+  };
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  onSubmit() {
+    console.log('data:',this.postData)
+  }
 }

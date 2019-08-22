@@ -9,7 +9,7 @@
         <span class="under-line-short"></span>
         <div class="mhl phs">
             <div *ngFor="let exp of resumeData.experience" class="mbl">
-                <h4 class="dark-gray"><b>{{exp.company}}</b></h4>
+                <h3 class="dark-gray"><b>{{exp.company}}</b></h3>
                 <div><b>{{exp.title}}</b> <span class="badge mvs" [ngClass]="{'badge-success':exp.duration?.isPresent, 'badge-info':!exp.duration?.isPresent}">{{exp.duration?.display}}</span></div>
                 <ul class="mtm prm">
                     <li *ngFor="let task of exp.tasks">

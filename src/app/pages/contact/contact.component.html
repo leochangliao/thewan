@@ -1,3 +1,59 @@
-<h3 class="pg-title"><b>- Communication -</b></h3>
+<h3 class="pg-title"><b>- Get in touch -</b></h3>
 <div class="row mam pal mtl text-left bg-white auto-opacity">
+    <div class="col-md-12">
+        <form class="contact-form" (submit)="onSubmit()"  #contactForm="ngForm">
+            <div class="mhl">
+                <h4>Drop me a Line</h4>
+                <span class="under-line-short"></span>
+            </div>
+            <label for="username">
+                <div>Name:</div>
+                <input class="form-control"
+                       type="text"
+                       id="username"
+                       name="username"
+                       [(ngModel)]="postData.username"
+                       required
+                       #username="ngModel"
+                       />
+                <span class="error-message">
+                    <div *ngIf="username.touched && username.invalid" class="text-right">Please enter your name</div>
+                </span>
+            </label>
+            <label for="email">
+                <div>Email:</div>
+                <input class="form-control"
+                       type="email"
+                       id="email"
+                       name="email"
+                       [(ngModel)]="postData.email"
+                       required
+                       email
+                       #email="ngModel"
+                       />
+                <span class="error-message">
+                    <div *ngIf="email.touched && email.invalid" class="text-right">Please enter a valid email</div>
+                </span>
+            </label>
+            <label for="message">
+                <div>Message:</div>
+                <textarea class="form-control"
+                          id="message"
+                          name="message"
+                          [(ngModel)]="postData.message"
+                          required
+                          minlength="3"
+                          maxlength="200"
+                          #message="ngModel"
+                          ></textarea>
+                <span class="error-message">
+                    <div *ngIf="message.touched && message.invalid" class="text-right">Please enter your message</div>
+                </span>
+            </label>
+            <div class="text-center mhm">
+                <button type="submit" [disabled]="contactForm.invalid" class="btn btn-primary" [ngClass]="{'btn-secondary':contactForm.invalid,'btn-primary':contactForm.valid}">Send</button>
+            </div>
+
+        </form>
+    </div>
 </div>
