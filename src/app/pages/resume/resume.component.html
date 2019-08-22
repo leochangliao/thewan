@@ -46,6 +46,7 @@
                      class="skill-bar bar-{{s.level}}"
                      [ngClass]="{'bar-zero': !isReady, 'bg-blue': i==1, 'bg-orange': i==2 }">
                      {{s.name}}
+                     <span *ngIf="s.focused"><img src="assets/images/icon/running.png" class="skill-focused"/></span>
                      <span class="float-right" [ngClass]="{'bar-percent-ready':isReady}">{{s.level}}%</span>
                 </div>
             </div>

@@ -30,6 +30,11 @@ hr {
             opacity: 1;
         }
     }
+    .skill-focused {
+        width: 20px;
+        margin-left: 5px;
+        float: right;
+    }
     &.bg-blue {
         color: rgb(18, 79, 193);
         background-color: rgba(152, 196, 244, 0.933);
