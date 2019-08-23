@@ -1,0 +1,33 @@
+.keypad-section {
+    width: 100%;
+    max-width:250px;
+    margin: 1em auto;
+    span {
+        display: inline-block;
+        width:50px;
+        padding: .5em 1em;
+        margin: .5em;
+        border: 1px solid #999;
+        cursor: pointer;
+        cursor: hand;
+        &:hover {
+            background-color: rgb(244, 134, 0);
+            color: white;
+        }
+    }
+    input {
+        transition: 1s all ease;
+        height: 40px;
+        font-size: 35px;
+        font-weight: bold;
+        color: #999;
+        border: 0;
+        &:focus {
+            background-color: rgb(177, 233, 181);
+        }
+        &.invalid {
+            background-color: red;
+            color:white;
+        }
+    }
+}

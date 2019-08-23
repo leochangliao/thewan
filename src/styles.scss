@@ -117,6 +117,10 @@ ul {
 .dark-gray {
     color: $darkgray-color;
 }
+.red {
+    color: rgba(213, 16, 2, 0.925);
+}
+
 /* bg colors */
 .bg-white {
     background-color: white;
@@ -128,9 +132,18 @@ ul {
     background-color: rgba(255,255,255, 0.5);
 }
 
-/* font size */
+/* fonts and font size */
 .font-s {
     font-size: 15px;
+}
+
+.disable-text-selection {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 /* animation */
