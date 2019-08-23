@@ -1,12 +1,13 @@
-import {Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { environment } from '../environments/environment';
 
-@Injectable({providedIn: 'root',})
+@Injectable({providedIn: 'root'})
 
 export class AppSettings {
     apiUrls:any = {
-        portfolio : 'http://api.thewan.ca/portfolio.php',
-        resume: 'http://api.thewan.ca/resume.php',
-        message: 'http://api.thewan.ca/postmsg.php'
+        portfolio : 'https://api.thewan.ca/portfolio.php',
+        resume: 'https://api.thewan.ca/resume.php',
+        message: environment.postMessageApi
     };
     imagePath:string = 'assets/images/';
 }
