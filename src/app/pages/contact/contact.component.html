@@ -1,11 +1,12 @@
-<h3 class="pg-title"><b>- Get in touch -</b></h3>
-<div class="row mam pal mtl text-left bg-white auto-opacity">
+<h3 class="pg-title" *ngIf="!inlineForm"><b>- Get in touch -</b></h3>
+<div class="row text-left bg-white auto-opacity" [ngClass]="{'mam pal mtl':!inlineForm}">
     <div class="col-md-12">
         <form class="contact-form" (submit)="onSubmit()"  #contactForm="ngForm">
             <div class="mhl">
                 <h4>Drop me a Line</h4>
                 <span class="under-line-short"></span>
             </div>
+            <p>{{description}}</p>
             <label for="username">
                 <div>Name:</div>
                 <input class="form-control"
@@ -53,7 +54,6 @@
             <div class="text-center mhm">
                 <button type="submit" [disabled]="contactForm.invalid" class="btn btn-primary" [ngClass]="{'btn-secondary':contactForm.invalid,'btn-primary':contactForm.valid}">Send</button>
             </div>
-
         </form>
     </div>
 </div>

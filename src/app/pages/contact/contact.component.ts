@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-contact',
@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
+  @Input() inlineForm:boolean = false;
+  @Input() description:string = "Any comments and suggestions are welcome!";
   postData:any = {
     username:"",
     email:"",
