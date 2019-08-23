@@ -6,53 +6,62 @@
                 <h4>Drop me a Line</h4>
                 <span class="under-line-short"></span>
             </div>
-            <p>{{description}}</p>
-            <label for="username">
-                <div>Name:</div>
-                <input class="form-control"
-                       type="text"
-                       id="username"
-                       name="username"
-                       [(ngModel)]="postData.username"
-                       required
-                       #username="ngModel"
-                       />
-                <span class="error-message">
-                    <div *ngIf="username.touched && username.invalid" class="text-right">Please enter your name</div>
-                </span>
-            </label>
-            <label for="email">
-                <div>Email:</div>
-                <input class="form-control"
-                       type="email"
-                       id="email"
-                       name="email"
-                       [(ngModel)]="postData.email"
-                       required
-                       email
-                       #email="ngModel"
-                       />
-                <span class="error-message">
-                    <div *ngIf="email.touched && email.invalid" class="text-right">Please enter a valid email</div>
-                </span>
-            </label>
-            <label for="message">
-                <div>Message:</div>
-                <textarea class="form-control"
-                          id="message"
-                          name="message"
-                          [(ngModel)]="postData.message"
-                          required
-                          minlength="3"
-                          maxlength="200"
-                          #message="ngModel"
-                          ></textarea>
-                <span class="error-message">
-                    <div *ngIf="message.touched && message.invalid" class="text-right">Please enter your message</div>
-                </span>
-            </label>
-            <div class="text-center mhm">
-                <button type="submit" [disabled]="contactForm.invalid" class="btn btn-primary" [ngClass]="{'btn-secondary':contactForm.invalid,'btn-primary':contactForm.valid}">Send</button>
+            <div *ngIf="successMessage">
+                <p class="alert alert-success"><b>Thank you! Your message has been sent successfully.</b></p>
+            </div>
+            <div *ngIf="!successMessage">
+                <p>{{description}}</p>
+                <label for="username">
+                    <div>Name:</div>
+                    <input class="form-control"
+                            type="text"
+                            id="username"
+                            name="username"
+                            [(ngModel)]="postData.username"
+                            required
+                            #username="ngModel"
+                            />
+                    <span class="error-message">
+                        <div *ngIf="username.touched && username.invalid" class="text-right">Please enter your name</div>
+                    </span>
+                </label>
+                <label for="email">
+                    <div>Email:</div>
+                    <input class="form-control"
+                            type="email"
+                            id="email"
+                            name="email"
+                            [(ngModel)]="postData.email"
+                            required
+                            email
+                            #email="ngModel"
+                            />
+                    <span class="error-message">
+                        <div *ngIf="email.touched && email.invalid" class="text-right">Please enter a valid email</div>
+                    </span>
+                </label>
+                <label for="message">
+                    <div>Message:</div>
+                    <textarea class="form-control"
+                                id="message"
+                                name="message"
+                                [(ngModel)]="postData.message"
+                                required
+                                minlength="3"
+                                maxlength="200"
+                                #message="ngModel"
+                                ></textarea>
+                    <span class="error-message">
+                        <div *ngIf="message.touched && message.invalid" class="text-right">Please enter your message</div>
+                    </span>
+                </label>
+                <div class="text-center mhm">
+                    <button type="submit" [disabled]="contactForm.invalid || isSending || errorMessage" class="btn btn-primary" [ngClass]="{'btn-secondary':contactForm.invalid||errorMessage,'btn-primary':contactForm.valid}">Send<span *ngIf="isSending">ing <span class="loader-inline mhs"></span></span></button>
+                </div>
+                <p *ngIf="!isSending && errorMessage" class="alert alert-danger">
+                    <b>Oops, something went wrong, please try again later ...</b><br/>
+                    <span class="font-s">{{errorMessage}}</span>
+                </p>
             </div>
         </form>
     </div>

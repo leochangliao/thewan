@@ -6,8 +6,13 @@ import { map } from 'rxjs/operators';
 
 import { AppSettings } from '../app.setting';
 
-@Injectable({providedIn: 'root',})
+export interface PostMsg {
+    username: string;
+    email: string;
+    message: string;
+}
 
+@Injectable({providedIn: 'root'})
 export class UtilityService {
     private today : Date = new Date();
     private cacheData:any = {
@@ -55,5 +60,9 @@ export class UtilityService {
 
     getResume():Observable<any> {
         return this.getHttpRequest(this.cacheData.resume, this.settings.apiUrls.resume);
+    }
+
+    postMessage(msg:PostMsg):Observable<any> {
+        return this.http.post(this.settings.apiUrls.message, msg);
     }
 }

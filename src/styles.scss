@@ -128,6 +128,11 @@ ul {
     background-color: rgba(255,255,255, 0.5);
 }
 
+/* font size */
+.font-s {
+    font-size: 15px;
+}
+
 /* animation */
 .animation {
     transition: all 1s ease;
@@ -141,6 +146,17 @@ ul {
 	animation: spin 2s linear infinite;
     display: inline-block;
     margin: 2em;
+}
+.loader-inline {
+    border: 3px solid #f3f3f3; /* Light grey */
+    border-top: 3px solid $orange-color; /* Blue */
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+	animation: spin 1s linear infinite;
+    display: inline-block;
+    margin: 0;
+    vertical-align: middle;
 }
 @keyframes spin {
     0% { transform: rotate(0deg); }
