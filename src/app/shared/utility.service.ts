@@ -77,7 +77,6 @@ export class UtilityService {
     }
 
     getBookmark(passcode:string):Observable<any> {
-        console.log(passcode)
         return this.getHttpRequest(this.cacheData.bookmark, this.settings.apiUrls.bookmark, {"passcode":passcode});
     }
 
