@@ -1,18 +1,25 @@
 # Note
-This is my practice project using Angular 8 to demo what I've learned from https://www.udemy.com/the-complete-guide-to-angular-2
 
-Project will be or already live on:
+## This is my practice project using Angular 8 to demo what I've learned from https://www.udemy.com/the-complete-guide-to-angular-2.
+
+## Goal:
+
+Converting existing porfolio site from AngularJS to Angular 8
+
+## Project is live on:
+
 https://thewan.ca/
 
-Project planning:
+## Project planning (revised Aug25, 2019):
+
 - header,footer,body components
 - preparing settings module, utility.service etc.
 - adding dynamic body background for each months
-- resume, portfolio, contact, bookmart (private and public) pages
-- custom modal component to handle pop-out message and maybe for showing portfolio details
-- integrate D3.js into resume page to show charts
-- editable bookmark items
-- prepare APIs at firebase for data storage (maybe)
+- resume, portfolio, contact, bookmart (private) pages
+- custom modal component to handle pop-out message and maybe for showing portfolio details (no need for this)
+- integrate D3.js into resume page to show charts (plan dropped)
+- editable bookmark items (pending...)
+- prepare APIs at firebase for data storage (too complicated, ended up prepare my own API using PHP)
 
 # Thewan
 Node version 10.9+
