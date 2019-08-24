@@ -1,16 +1,14 @@
 <div class="logo">
-    <img class="hover-rotate" src="assets/images/leo-2015-04-02.jpg" />
+    <a routerLink="/"><img class="hover-rotate" src="assets/images/leo-2015-04-02.jpg" /></a>
 </div>
 <div class="text-center">
-    <div class="d-inline-block bg-white-50">
+    <div class="menu-toggle"><span (click)="toggleMenu=!toggleMenu">X</span></div>
+    <div class="d-inline-block bg-white-50 mobile-width">
             <nav class="navbar navbar-expand-lg navbar-light p-none">
                 <a class="logo-small sr-only"><img src="assets/images/lcl-logo-small.png" /></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
                 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
+                <div class="collapse navbar-collapse" [ngClass]="{'show':toggleMenu}" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto"  (click)="toggleMenu=false">
                         <li class="nav-item" routerLink="/portfolio" routerLinkActive="active">
                             <a class="nav-link">Portfolio</a>
                         </li>

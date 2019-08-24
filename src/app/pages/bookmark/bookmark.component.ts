@@ -45,6 +45,7 @@ export class BookmarkComponent implements OnInit {
         this.isLoading = false;
         this.locked=false;
         this.bookmark = data;
+        this.bookmark[0]._show = true;
         localStorage.setItem('bookmark', this.passcode);
       },
       error=>{

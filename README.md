@@ -16,7 +16,10 @@ Project planning:
 
 # Thewan
 Node version 10.9+
-Boostrap 4.3.1+
+
+css Boostrap 4.3.1+ (https://getbootstrap.com/)
+
+ng Bootstrap 5.1.0 (https://ng-bootstrap.github.io/)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.0.
 

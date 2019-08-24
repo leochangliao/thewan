@@ -42,3 +42,34 @@
         background-color: white;
     }
 }
+.menu-toggle {
+    display:none;
+    font-size: 20px;
+    text-align: center;
+    @media screen and (max-width: 992px) {
+        display: block;
+    }
+    span {
+        cursor: pointer;
+        cursor: hand;
+    }
+}
+.navbar-collapse {
+    transition: .5s max-height ease;
+    @media screen and (max-width: 992px) {
+        max-height: 0;
+        display: inline-block;
+        overflow:hidden;
+        &.show {
+            max-height: 300px;
+        }
+    }
+}
+
+.mobile-width {
+    width: auto;
+    @media screen and (max-width: 992px) {
+        width: 95%;
+        max-width: 300px;
+    }
+}

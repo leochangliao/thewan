@@ -16,7 +16,7 @@ export class PortfolioComponent implements OnInit {
   ngOnInit() {
     this.isLoading = true;
     this.utilityService.getPortfolio().subscribe(resp =>{
-      this.portfolio = resp;
+      this.portfolio = resp || [];
       this.isLoading = false;
     }, error => {
       if(error && error.message){
