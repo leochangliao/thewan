@@ -2,7 +2,9 @@
     <a routerLink="/"><img class="hover-rotate" src="assets/images/leo-2015-04-02.jpg" /></a>
 </div>
 <div class="text-center">
-    <div class="menu-toggle"><span (click)="toggleMenu=!toggleMenu">X</span></div>
+    <div class="menu-toggle">
+        <span (click)="toggleMenu=!toggleMenu"><span *ngIf="!toggleMenu">[ = ]</span><span *ngIf="toggleMenu">[ x ]</span></span>
+    </div>
     <div class="d-inline-block bg-white-50 mobile-width">
             <nav class="navbar navbar-expand-lg navbar-light p-none">
                 <a class="logo-small sr-only"><img src="assets/images/lcl-logo-small.png" /></a>

@@ -37,21 +37,19 @@
         margin: .5em 0;
         .panel-title {
             background-color: #cecece;
-            border: 1px solid #666;
+            border: 1px solid #999;
             padding: .5em;
             font-size: 18px;
             font-weight: bold;
-            border-radius: 10px 0 0 0;
             cursor: pointer;
             cursor: hand;
         }
         .panel-body {
             background-color:white;
-            border: 1px solid #666;
+            border: 1px solid #999;
             border-top:0;
             max-height: 0;
             padding: 0;
-            border-radius: 0 0 10px 0;
             transition: max-height .5s ease-out;
             overflow:hidden;
             &.show {

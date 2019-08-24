@@ -1,5 +1,5 @@
 <h3 class="pg-title"><b>- Resources -</b></h3>
-<div *ngIf="locked" class="row mam pal mtl text-center bg-white auto-opacity">
+<div *ngIf="locked" class="row mhm pal mtl text-center bg-white auto-opacity">
     <div class="col-md-12 disable-text-selection" *ngIf="retryCounter < retryAllowed;else tryAgain">
         <h3>This page is locked for private use</h3>
         <div>To unlock, please provide your passcode</div>
@@ -15,8 +15,8 @@
         </div>
     </ng-template>
 </div>
-<div *ngIf="!locked" class="row mam mtl text-center">
-    <div class="col-md-12">
+<div *ngIf="!locked" class="row mhm mtl text-center">
+    <div class="col-md-12 pvs">
         <span class="loader" *ngIf="isLoading"></span>
         <div *ngIf="!isLoading">
             <button class="btn btn-danger" (click)="lock()">Lock this page</button>

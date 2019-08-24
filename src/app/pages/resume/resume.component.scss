@@ -6,6 +6,9 @@ hr {
 .company-tasks {
     border-left: 3px solid #666;
     transition: .5s all ease;
+    @media screen and (max-width: 992px) {
+        border-left: 3px solid $orange-color;
+    }
     &:hover {
         border-left: 3px solid $orange-color;
     }
@@ -66,5 +69,11 @@ hr {
     }
     &.bar-zero {
         width:30%;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .row {
+        padding: 1em .3em;
     }
 }

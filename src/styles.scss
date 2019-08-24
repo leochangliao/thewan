@@ -29,6 +29,9 @@ ul {
 .auto-opacity {
     opacity: 0.8;
     transition: .5s all ease;
+    @media screen and (max-width: 992px) {
+        opacity: 1;
+    }
     &:hover {
         opacity: 1;
     }
@@ -63,6 +66,10 @@ ul {
 .phl {
     padding-top: 2em;
     padding-bottom: 2em;
+}
+.pvs {
+    padding-left: .5em;
+    padding-right: .5em;
 }
 .pvm{
     padding-left: 1em;
