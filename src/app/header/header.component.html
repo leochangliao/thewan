@@ -8,7 +8,6 @@
     <div class="d-inline-block bg-white-50 mobile-width animation" [ngClass]="{'navbar-fixed-pos':renderFixedMenu}">
             <nav class="navbar navbar-expand-lg navbar-light p-none">
                 <a *ngIf="renderFixedMenu" class="logo-small-a"><img src="assets/images/lcl-logo-small.png" /></a>
-                
                 <div class="collapse navbar-collapse" [ngClass]="{'show':toggleMenu}" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto"  (click)="toggleMenu=false">
                         <li class="nav-item" routerLink="/portfolio" routerLinkActive="active">
