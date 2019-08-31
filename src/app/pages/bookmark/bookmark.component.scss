@@ -76,16 +76,28 @@
                     td {
                         padding: 0;
                         a {
-                            font-size: 20px;
-                            padding: .3em .7em;
+                            font-size: 25px;
+                            width: 295px;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                            padding: 0 0 0 .7em;
                             color: black;
-                            font-weight: bold;
                             display: block;
                             overflow: hidden;
                             text-decoration: none;
                             &:hover {
                                 background-color: rgb(68, 66, 64);
                                 color: white;
+                            }
+                            @media screen and (max-width: 1200px) {
+                                width: 220px;
+                            }
+                            @media screen and (max-width: 992px) {
+                                width: 270px;
+                            }
+                            @media screen and (max-width: 768px) {
+                                width: 100%;
                             }
                         }
                     }
