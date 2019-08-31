@@ -15,8 +15,8 @@ https://thewan.ca/
 - header,footer,body components
 - preparing settings module, utility.service etc.
 - adding dynamic body background for each months
-- resume, portfolio, contact, bookmart (private) pages
-- custom modal component to handle pop-out message and maybe for showing portfolio details (no need for this)
+- resume, portfolio, contact, bookmark (private) pages
+- custom modal component to handle pop-out message and maybe for showing portfolio details (plan dropped)
 - integrate D3.js into resume page to show charts (plan dropped)
 - editable bookmark items (pending...)
 - prepare APIs at firebase for data storage (too complicated, ended up prepare my own API using PHP)
