@@ -9,7 +9,8 @@
             <div class="site-screenshot-div" [ngStyle]="{'background-image': 'url(' + p.img_url + ')'}"></div>
             <h5 class="mas"><b>{{p.name}}</b></h5>
             <p>
-                <a [href]="p.site_url" target="_blank">{{p.site_url}}</a>
+                <a *ngIf="p.site_url" [href]="p.site_url" target="_blank">{{p.site_url}}</a>
+                <span *ngIf="!p.site_url">TBD</span>
             </p>
             <div class="pam phn">
                 <table>
