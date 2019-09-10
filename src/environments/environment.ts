@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  bookmarkApi: 'https://api.thewan.ca/bookmark.php',
   postMessageApi: 'https://api.thewan.ca/postmsg.php'
 };
 
