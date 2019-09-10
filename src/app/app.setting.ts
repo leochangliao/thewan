@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../environments/environment';
 
 @Injectable({providedIn: 'root'})
 
@@ -8,7 +7,7 @@ export class AppSettings {
         portfolio : 'https://api.thewan.ca/portfolio.php',
         resume: 'https://api.thewan.ca/resume.php',
         bookmark: 'https://api.thewan.ca/bookmark.php',
-        message: environment.postMessageApi
+        message: 'https://api.thewan.ca/postmsg.php'
     };
     imagePath:string = 'assets/images/';
 }

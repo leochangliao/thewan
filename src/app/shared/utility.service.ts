@@ -11,6 +11,9 @@ export interface PostMsg {
     email: string;
     message: string;
 }
+export interface BookmarkAuth {
+    passcode : string;
+}
 
 @Injectable({providedIn: 'root'})
 export class UtilityService {
@@ -76,8 +79,16 @@ export class UtilityService {
         return this.getHttpRequest(this.cacheData.resume, this.settings.apiUrls.resume);
     }
 
-    getBookmark(passcode:string):Observable<any> {
-        return this.getHttpRequest(this.cacheData.bookmark, this.settings.apiUrls.bookmark, {"passcode":passcode});
+    getBookmark(passcode:BookmarkAuth):Observable<any> {
+        if(this.cacheData.bookmark.data) {
+            return of(this.cacheData.bookmark.data);
+        } else {
+            return this.http.post(this.settings.apiUrls.bookmark, passcode);
+        }
+    }
+
+    setBookmark(data:any) {
+        this.cacheData.bookmark.data = data;
     }
 
     postMessage(msg:PostMsg):Observable<any> {

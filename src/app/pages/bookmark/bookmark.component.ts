@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UtilityService } from 'src/app/shared/utility.service';
+import { UtilityService, BookmarkAuth } from 'src/app/shared/utility.service';
 
 @Component({
   selector: 'app-bookmark',
@@ -39,14 +39,18 @@ export class BookmarkComponent implements OnInit {
   }
 
   unlock() {
+    let passcodeAuth:BookmarkAuth = {
+      passcode: this.passcode
+    }
     this.isLoading = true;
-    this.utility.getBookmark(this.passcode).subscribe(
+    this.utility.getBookmark(passcodeAuth).subscribe(
       data=>{
         this.isLoading = false;
         this.locked=false;
         this.bookmark = data;
         this.bookmark[0]._show = true;
         localStorage.setItem('bookmark', this.passcode);
+        this.utility.setBookmark(data);
       },
       error=>{
         this.isLoading = false;
