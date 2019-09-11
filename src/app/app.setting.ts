@@ -8,7 +8,8 @@ export class AppSettings {
         portfolio : 'https://api.thewan.ca/portfolio.php',
         resume: 'https://api.thewan.ca/resume.php',
         bookmark: environment.bookmarkApi,
-        message: environment.postMessageApi
+        message: environment.postMessageApi,
+        login: environment.loginApi
     };
     imagePath:string = 'assets/images/';
 }

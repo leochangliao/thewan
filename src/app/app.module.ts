@@ -13,6 +13,7 @@ import { ResumeComponent } from './pages/resume/resume.component';
 import { BookmarkComponent } from './pages/bookmark/bookmark.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { AdminComponent } from './pages/admin/admin.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     ResumeComponent,
     BookmarkComponent,
     ContactComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    AdminComponent
   ],
   imports: [
     FormsModule,

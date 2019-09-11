@@ -4,6 +4,7 @@ import { PortfolioComponent } from './pages/portfolio/portfolio.component';
 import { ResumeComponent } from './pages/resume/resume.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { BookmarkComponent } from './pages/bookmark/bookmark.component';
+import { AdminComponent } from './pages/admin/admin.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 
@@ -22,6 +23,9 @@ const routes: Routes = [
   },
   { path: 'bookmark',
     component: BookmarkComponent
+  },
+  { path: 'admin',
+    component: AdminComponent
   },
   {
     path: '',

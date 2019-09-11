@@ -14,6 +14,10 @@ export interface PostMsg {
 export interface BookmarkAuth {
     passcode : string;
 }
+export interface Credentials {
+    username: string;
+    password: string;
+}
 
 @Injectable({providedIn: 'root'})
 export class UtilityService {
@@ -93,5 +97,8 @@ export class UtilityService {
 
     postMessage(msg:PostMsg):Observable<any> {
         return this.http.post(this.settings.apiUrls.message, msg);
+    }
+    login(auth:Credentials):Observable<any> {
+        return this.http.post(this.settings.apiUrls.login, auth);
     }
 }

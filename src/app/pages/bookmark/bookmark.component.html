@@ -20,6 +20,7 @@
         <span class="loader" *ngIf="isLoading"></span>
         <div *ngIf="!isLoading">
             <button class="btn btn-danger" (click)="lock()">Lock this page</button>
+            <button class="btn btn-warning" routerLink="/admin">Admin Login</button>
             <div class="accordion mhm">
                 <div class="panel" *ngFor="let book of bookmark;">
                     <div class="panel-title" (click)="book._show=!book._show;">{{book.title}}</div>
