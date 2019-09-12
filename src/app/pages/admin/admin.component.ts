@@ -26,7 +26,7 @@ export class AdminComponent implements OnInit {
     setTimeout(()=>{
       this.isSending = false;
       this.successMessage = success;
-    },1500);
+    },1000);
   }
 
   private initSending() {
@@ -38,6 +38,7 @@ export class AdminComponent implements OnInit {
     this.utility.login(this.postData).subscribe(
       resp => {
         this.delayResetSending(true);
+        console.log(resp)
       },
       error => {
         if(error && error.message){

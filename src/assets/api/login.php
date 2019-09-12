@@ -8,7 +8,8 @@
     $result = login($_REQUEST, ROOT_PATH);
     
     if($result){
-        echo json_encode($result, JSON_PRETTY_PRINT);
+        $key = array('key'=>$result);
+        echo json_encode($key, JSON_PRETTY_PRINT);
     }
     else {
         $error = array('error'=>true);
