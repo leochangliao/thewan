@@ -36,6 +36,7 @@ export class UtilityService {
             data: null
         }
     }
+    public token:string = "";
 
     constructor (private settings:AppSettings,
                  private http:HttpClient) {}

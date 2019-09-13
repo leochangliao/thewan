@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Credentials, UtilityService } from '../../shared/utility.service';
+import { UtilityService } from '../../shared/utility.service';
 
 @Component({
   selector: 'app-admin',
@@ -8,46 +8,21 @@ import { Credentials, UtilityService } from '../../shared/utility.service';
 })
 export class AdminComponent implements OnInit {
 
-  postData:Credentials = {
-    username:"",
-    password:""
-  };
-
-  isSending:boolean = false;
-  successMessage:boolean = false;
-  errorMessage:string = "";
+  loggedin:boolean = false;
 
   constructor(private utility:UtilityService) { }
 
   ngOnInit() {
+    if(this.utility.token) {
+      this.loggedin = true;
+    }
   }
-
-  private delayResetSending(success) {
-    setTimeout(()=>{
-      this.isSending = false;
-      this.successMessage = success;
-    },1000);
+  loggedinHandle(resp) {
+    this.loggedin = true;
+    this.utility.token = resp.key;
   }
-
-  private initSending() {
-    this.isSending = true;
-  }
-
-  onSubmit() {
-    this.initSending();
-    this.utility.login(this.postData).subscribe(
-      resp => {
-        this.delayResetSending(true);
-        console.log(resp)
-      },
-      error => {
-        if(error && error.message){
-          this.errorMessage = error.message;
-        } else {
-          this.errorMessage = "Invalid user and password, please try again later.";
-        }
-        this.delayResetSending(false);
-      }
-    );
+  logout() {
+    this.utility.token = "";
+    this.loggedin = false;
   }
 }

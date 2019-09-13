@@ -1,53 +1,10 @@
 <h3 class="pg-title"><b>- Magic -</b></h3>
 <div class="row text-left bg-white auto-opacity mhm pal mtl">
     <div class="col-md-12">
-        <form class="login-form" (submit)="onSubmit()"  #loginForm="ngForm">
-            <div class="mhl">
-                <h4>Admin Portal</h4>
-                <span class="under-line-short"></span>
-            </div>
-            <div *ngIf="!successMessage">
-                <p>Please provide username and password below</p>
-                <label for="username">
-                    <div>User ID:</div>
-                    <input class="form-control"
-                            type="text"
-                            id="username"
-                            name="username"
-                            autocomplete="on"
-                            [(ngModel)]="postData.username"
-                            required
-                            #username="ngModel"
-                            />
-                    <span class="error-message">
-                        <div *ngIf="username.touched && username.invalid" class="text-right">Please enter User ID</div>
-                    </span>
-                </label>
-                <label for="password">
-                    <div>Password:</div>
-                    <input class="form-control"
-                            type="password"
-                            id="password"
-                            name="password"
-                            autocomplete="off"
-                            [(ngModel)]="postData.password"
-                            required
-                            #password="ngModel"
-                            />
-                    <span class="error-message">
-                        <div *ngIf="password.touched && password.invalid" class="text-right">Please enter your password</div>
-                    </span>
-                </label>
-                <div class="text-center mhm">
-                    <button type="submit" [disabled]="loginForm.invalid || isSending || errorMessage" class="btn btn-primary" [ngClass]="{'btn-secondary':loginForm.invalid||errorMessage,'btn-primary':loginForm.valid}">Send<span *ngIf="isSending">ing <span class="loader-inline mhs"></span></span></button>
-                </div>
-                <p *ngIf="!isSending && errorMessage" class="alert alert-danger">
-                    <span class="font-s">{{errorMessage}}</span>
-                </p>
-            </div>
-        </form>
-        <div *ngIf="successMessage">
-            <p class="alert alert-success"><b>You have logged in</b></p>
+        <app-login *ngIf="!loggedin" (loggedinHandler)="loggedinHandle($event)"></app-login>
+        <div *ngIf="loggedin" class="text-center">
+            <button class="btn btn-danger mbl" (click)="logout()">Logout</button>
+            <admin-content></admin-content>
         </div>
     </div>
 </div>
