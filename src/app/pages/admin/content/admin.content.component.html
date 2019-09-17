@@ -12,7 +12,7 @@
     </div>
     <div *ngSwitchCase="1">
         <textarea #resumeElm class="form-control">{{uiHandler.tabs[1].data | json}}</textarea>
-        <div class="text-right" *ngIf="!uiHandler.tabs[1].isLoading && utilityService.token">
+        <div class="text-right" *ngIf="!uiHandler.tabs[1].isLoading && uiHandler.token">
             <button class="btn btn-primary mtm" [disabled]="uiHandler.tabs[1].isSaving" (click)="updateData(uiHandler.tabs[1])">Save</button>
         </div>
     </div>

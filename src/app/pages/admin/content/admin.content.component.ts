@@ -15,23 +15,27 @@ export class AdminContentComponent implements OnInit {
         name: "porfolio",
         active: true,
         data: null,
-        isLoading: false
+        isLoading: false,
+        isSaving: false
       },
       {
         name: "resume",
         active: false,
         data: null,
-        isLoading: false
+        isLoading: false,
+        isSaving: false
       },
       {
         name: "bookmark",
         active: false,
         data: null,
         isLoading: false,
+        isSaving: false,
         passcode: localStorage.getItem('bookmark') || ""
       }
     ],
-    activeTabIndex: 0
+    activeTabIndex: 0,
+    token: this.utilityService.token
   }
 
   constructor(private utilityService:UtilityService) { }
@@ -103,7 +107,7 @@ export class AdminContentComponent implements OnInit {
 
   updateData(tab:any) {
     let payload:DataUpdate = {
-      token: this.utilityService.token,
+      token: this.uiHandler.token,
       type: tab.name,
       data: null
     };
