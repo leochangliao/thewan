@@ -1,6 +1,6 @@
 <ul class="nav nav-tabs">
     <li *ngFor="let tab of uiHandler.tabs; let i=index;"
-        class="capitalize"
+        class="text-capitalize"
         [ngClass]="{'active': tab.active}"
         (click)="setActiveTab(tab, i)">
         {{tab.name}} <span *ngIf="tab.isLoading" class="loader-inline mhs"></span>
