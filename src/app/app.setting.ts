@@ -9,7 +9,8 @@ export class AppSettings {
         resume: 'https://api.thewan.ca/resume.php',
         bookmark: environment.bookmarkApi,
         message: environment.postMessageApi,
-        login: environment.loginApi
+        login: environment.loginApi,
+        updateData: environment.updateDataApi
     };
     imagePath:string = 'assets/images/';
 }

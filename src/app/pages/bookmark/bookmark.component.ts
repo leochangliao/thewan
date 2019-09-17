@@ -50,7 +50,7 @@ export class BookmarkComponent implements OnInit {
         this.bookmark = data;
         this.bookmark[0]._show = true;
         localStorage.setItem('bookmark', this.passcode);
-        this.utility.setBookmark(data);
+        this.utility.setCacheData('bookmark', data);
       },
       error=>{
         this.isLoading = false;

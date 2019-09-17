@@ -18,7 +18,11 @@ export interface Credentials {
     username: string;
     password: string;
 }
-
+export interface DataUpdate {
+    token: string;
+    type: string;
+    data: any;
+}
 @Injectable({providedIn: 'root'})
 export class UtilityService {
     private today : Date = new Date();
@@ -45,6 +49,13 @@ export class UtilityService {
         return this.settings.imagePath + 'wallpaper/wallpaper-month-' + (this.today.getMonth() + 1) + '.jpg';
     }
 
+    parseJsonString(str) {
+        try {
+            return JSON.parse(str);
+        } catch (e) {
+            return null;
+        }
+    }
     /**
      * return cache data from HTTP GET request if applicable
      * @param handler get request data object
@@ -92,14 +103,22 @@ export class UtilityService {
         }
     }
 
-    setBookmark(data:any) {
-        this.cacheData.bookmark.data = data;
+    setCacheData(key:string, data:any) {
+        if(this.cacheData[key]) {
+            console.log(key, data)
+            this.cacheData[key].data = data;
+        }
     }
 
     postMessage(msg:PostMsg):Observable<any> {
         return this.http.post(this.settings.apiUrls.message, msg);
     }
+
     login(auth:Credentials):Observable<any> {
         return this.http.post(this.settings.apiUrls.login, auth);
+    }
+
+    updateData(data:DataUpdate):Observable<any> {
+        return this.http.post(this.settings.apiUrls.updateData, data);
     }
 }

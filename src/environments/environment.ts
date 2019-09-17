@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   bookmarkApi: 'https://api.thewan.ca/bookmark.php',
   postMessageApi: 'https://api.thewan.ca/postmsg.php',
-  loginApi: 'https://api.thewan.ca/login.php'
+  loginApi: 'https://api.thewan.ca/login.php',
+  updateDataApi: 'https://api.thewan.ca/updateData.php'
 };
 
 /*

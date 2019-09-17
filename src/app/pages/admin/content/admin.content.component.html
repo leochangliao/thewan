@@ -1,1 +1,22 @@
-<p>logged in</p>
+<ul class="nav nav-tabs">
+    <li *ngFor="let tab of uiHandler.tabs; let i=index;"
+        class="capitalize"
+        [ngClass]="{'active': tab.active}"
+        (click)="setActiveTab(tab, i)">
+        {{tab.name}} <span *ngIf="tab.isLoading" class="loader-inline mhs"></span>
+    </li>
+</ul>
+<div class="active-content" [ngSwitch]="uiHandler.activeTabIndex">
+    <div *ngSwitchCase="0">
+        <textarea class="form-control">{{uiHandler.tabs[0].data | json}}</textarea>
+    </div>
+    <div *ngSwitchCase="1">
+        <textarea #resumeElm class="form-control">{{uiHandler.tabs[1].data | json}}</textarea>
+        <div class="text-right" *ngIf="!uiHandler.tabs[1].isLoading && utilityService.token">
+            <button class="btn btn-primary mtm" [disabled]="uiHandler.tabs[1].isSaving" (click)="updateData(uiHandler.tabs[1])">Save</button>
+        </div>
+    </div>
+    <div *ngSwitchCase="2">
+        <textarea class="form-control">{{uiHandler.tabs[2].data | json}}</textarea>
+    </div>
+</div>
