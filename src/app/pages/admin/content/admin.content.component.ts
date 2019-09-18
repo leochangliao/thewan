@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { UtilityService, BookmarkAuth, DataUpdate } from '../../../shared/utility.service';
+import { UtilityService, BookmarkAuth, DataUpdate, SecureData } from '../../../shared/utility.service';
 import { AdminService } from './admin.content.setting';
 
 @Component({
@@ -12,6 +12,7 @@ export class AdminContentComponent implements OnInit {
   @ViewChild('portfolioElm',{static: false}) portfolioElm: ElementRef;
   @ViewChild('resumeElm',{static: false}) resumeElm: ElementRef;
   @ViewChild('bookmarkElm',{static: false}) bookmarkElm: ElementRef;
+  @ViewChild('messageElm',{static: false}) messageElm: ElementRef;
 
   uiHandler = {
     tabs : AdminService.setting.tabs,
@@ -44,6 +45,9 @@ export class AdminContentComponent implements OnInit {
         break;
       case 2:
         this.getBookmark();
+        break;
+      case 3:
+        this.getMessage();
         break;
     }
   }
@@ -86,6 +90,22 @@ export class AdminContentComponent implements OnInit {
     }
   }
 
+  getMessage() {
+    if(!this.uiHandler.tabs[3].data){
+      let payload:SecureData = {
+        token: this.uiHandler.token,
+        type: 'message'
+      };
+      this.uiHandler.tabs[3].isLoading = true;
+      this.utilityService.getSecureData(payload).subscribe(resp =>{
+        this.uiHandler.tabs[3].isLoading = false;
+        this.uiHandler.tabs[3].data = resp || [];
+      }, error => {
+        this.uiHandler.tabs[3].isLoading = false;
+      });
+    }
+  }
+
   updateData(tab:any) {
     let payload:DataUpdate = {
       token: this.uiHandler.token,
@@ -101,6 +121,9 @@ export class AdminContentComponent implements OnInit {
         break;
       case 'bookmark':
         payload.data = this.utilityService.parseJsonString(this.bookmarkElm.nativeElement.value);
+        break;
+      case 'message':
+        payload.data = this.utilityService.parseJsonString(this.messageElm.nativeElement.value);
         break;
     }
     if(payload.data) {

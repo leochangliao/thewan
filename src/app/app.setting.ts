@@ -10,7 +10,8 @@ export class AppSettings {
         bookmark: environment.bookmarkApi,
         message: environment.postMessageApi,
         login: environment.loginApi,
-        updateData: environment.updateDataApi
+        updateData: environment.updateDataApi,
+        getData: environment.getDataApi
     };
     imagePath:string = 'assets/images/';
 }

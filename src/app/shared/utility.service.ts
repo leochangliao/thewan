@@ -23,6 +23,11 @@ export interface DataUpdate {
     type: string;
     data: any;
 }
+export interface SecureData {
+    token: string;
+    type: string;
+}
+
 @Injectable({providedIn: 'root'})
 export class UtilityService {
     private today : Date = new Date();
@@ -56,6 +61,7 @@ export class UtilityService {
             return null;
         }
     }
+
     /**
      * return cache data from HTTP GET request if applicable
      * @param handler get request data object
@@ -115,6 +121,10 @@ export class UtilityService {
 
     login(auth:Credentials):Observable<any> {
         return this.http.post(this.settings.apiUrls.login, auth);
+    }
+
+    getSecureData(payload:SecureData):Observable<any> {
+        return this.http.post(this.settings.apiUrls.getData, payload);
     }
 
     updateData(data:DataUpdate):Observable<any> {
