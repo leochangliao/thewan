@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { UtilityService, BookmarkAuth, DataUpdate } from '../../../shared/utility.service';
+import { AdminService } from './admin.content.setting';
 
 @Component({
   selector: 'admin-content',
@@ -8,32 +9,12 @@ import { UtilityService, BookmarkAuth, DataUpdate } from '../../../shared/utilit
 })
 
 export class AdminContentComponent implements OnInit {
+  @ViewChild('portfolioElm',{static: false}) portfolioElm: ElementRef;
   @ViewChild('resumeElm',{static: false}) resumeElm: ElementRef;
+  @ViewChild('bookmarkElm',{static: false}) bookmarkElm: ElementRef;
+
   uiHandler = {
-    tabs : [
-      {
-        name: "porfolio",
-        active: true,
-        data: null,
-        isLoading: false,
-        isSaving: false
-      },
-      {
-        name: "resume",
-        active: false,
-        data: null,
-        isLoading: false,
-        isSaving: false
-      },
-      {
-        name: "bookmark",
-        active: false,
-        data: null,
-        isLoading: false,
-        isSaving: false,
-        passcode: localStorage.getItem('bookmark') || ""
-      }
-    ],
+    tabs : AdminService.setting.tabs,
     activeTabIndex: 0,
     token: this.utilityService.token
   }
@@ -116,11 +97,12 @@ export class AdminContentComponent implements OnInit {
         payload.data = this.utilityService.parseJsonString(this.resumeElm.nativeElement.value);
         break;
       case 'portfolio':
+        payload.data = this.utilityService.parseJsonString(this.portfolioElm.nativeElement.value);
         break;
       case 'bookmark':
+        payload.data = this.utilityService.parseJsonString(this.bookmarkElm.nativeElement.value);
         break;
     }
-
     if(payload.data) {
       tab.isSaving = true;
       this.utilityService.updateData(payload).subscribe(resp =>{
@@ -131,6 +113,7 @@ export class AdminContentComponent implements OnInit {
       }, error => {
         tab.isSaving = false;
         console.error('Api request failed:', payload);
+        console.error('Please logout and login again.');
         console.error(error);
         alert("something wrong, please check console log");
       });

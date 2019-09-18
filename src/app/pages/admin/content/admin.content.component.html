@@ -8,15 +8,21 @@
 </ul>
 <div class="active-content" [ngSwitch]="uiHandler.activeTabIndex">
     <div *ngSwitchCase="0">
-        <textarea class="form-control">{{uiHandler.tabs[0].data | json}}</textarea>
+        <textarea #portfolioElm class="form-control font-code">{{uiHandler.tabs[0].data | json}}</textarea>
+        <div class="text-right" *ngIf="!uiHandler.tabs[0].isLoading && uiHandler.token">
+            <button class="btn btn-primary mtm" [disabled]="uiHandler.tabs[0].isSaving" (click)="updateData(uiHandler.tabs[0])">Save</button>
+        </div>
     </div>
     <div *ngSwitchCase="1">
-        <textarea #resumeElm class="form-control">{{uiHandler.tabs[1].data | json}}</textarea>
+        <textarea #resumeElm class="form-control font-code">{{uiHandler.tabs[1].data | json}}</textarea>
         <div class="text-right" *ngIf="!uiHandler.tabs[1].isLoading && uiHandler.token">
             <button class="btn btn-primary mtm" [disabled]="uiHandler.tabs[1].isSaving" (click)="updateData(uiHandler.tabs[1])">Save</button>
         </div>
     </div>
     <div *ngSwitchCase="2">
-        <textarea class="form-control">{{uiHandler.tabs[2].data | json}}</textarea>
+        <textarea #bookmarkElm class="form-control font-code">{{uiHandler.tabs[2].data | json}}</textarea>
+        <div class="text-right" *ngIf="!uiHandler.tabs[2].isLoading && uiHandler.token">
+            <button class="btn btn-primary mtm" [disabled]="uiHandler.tabs[2].isSaving" (click)="updateData(uiHandler.tabs[2])">Save</button>
+        </div>        
     </div>
 </div>

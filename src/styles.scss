@@ -40,6 +40,10 @@ ul {
     background-color: $orange-color;
     position: absolute;
 }
+.mouse-click {
+    cursor: hand;
+    cursor: pointer;
+}
 /* padding and margin */
 .p-none {
     padding: 0;
@@ -118,6 +122,9 @@ ul {
 .mbs {
     margin-bottom: .5em;
 }
+.mls {
+    margin-left: .5em;
+}
 /* text color */
 .dark-gray {
     color: $darkgray-color;
@@ -138,8 +145,19 @@ ul {
 }
 
 /* fonts and font size */
+.font-code {
+    font-family: 'Courier New', Courier, monospace;
+}
+.font-psw {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
 .font-s {
     font-size: 15px;
+}
+.font-xs {
+    font-size: 13px;
 }
 
 .disable-text-selection {

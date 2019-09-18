@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
 
   isSending:boolean = false;
   errorMessage:string = "";
+  keepLoggedin:boolean = false;
   constructor(private utility:UtilityService) { }
 
   ngOnInit() {}
@@ -30,6 +31,9 @@ export class LoginComponent implements OnInit {
     this.utility.login(this.postData).subscribe(
       resp => {
         this.isSending = false;
+        if(this.keepLoggedin && resp.key) {
+          localStorage.setItem("token",resp.key);
+        }
         this.loggedinHandler.emit(resp);
       },
       error => {

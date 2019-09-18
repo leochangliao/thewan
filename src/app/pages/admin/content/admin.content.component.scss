@@ -1,21 +1,30 @@
-li {
-    padding: .5em 1em;
-    cursor: pointer;
-    color: #999;
-    &.active {
-        color: black;
-        border: 1px solid #ccc;
-        border-bottom: 2px solid orange;
-        border-radius: 5px 5px 0 0;
-    }
-    &:hover {
-        color: black;
+ul {
+    border-bottom: 1px solid orange;
+    li {
+        padding: .5em 1em;
+        margin-bottom: -1px;
+        cursor: pointer;
+        color: #999;
+        &.active {
+            color: black;
+            background-color: white;
+            border: 1px solid orange;
+            border-top: 2px solid orange;
+            border-bottom: 0;
+            border-radius: 5px 5px 0 0;
+        }
+        &:hover {
+            color: black;
+        }
     }
 }
+
 .active-content {
     padding:1em;
     text-align: left;
     textarea {
-        min-height: 250px;
+        min-height: 350px;
+        color: #00ff00;
+        background-color: black;
     }
 }

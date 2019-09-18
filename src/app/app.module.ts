@@ -17,7 +17,6 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { LoginComponent } from './pages/admin/login/login.component';
 import { AdminContentComponent } from './pages/admin/content/admin.content.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

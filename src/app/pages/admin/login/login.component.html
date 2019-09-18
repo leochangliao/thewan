@@ -21,7 +21,7 @@
     </label>
     <label for="password">
         <div>Password:</div>
-        <input class="form-control"
+        <input class="form-control font-psw"
                 type="password"
                 id="password"
                 name="password"
@@ -34,7 +34,14 @@
             <div *ngIf="password.touched && password.invalid" class="text-right">Please enter your password</div>
         </span>
     </label>
-    <div class="text-center mhm">
+    <div class="text-center mhs">
+        <label for="keep" class="mouse-click">
+            <input id="keep"
+                   name="keep"
+                   [checked]="keepLoggedin"
+                   (change)="keepLoggedin = !keepLoggedin"
+                   type="checkbox"> <span class="mls font-xs">Keep logged in</span>
+        </label>
         <button type="submit" [disabled]="loginForm.invalid || isSending || errorMessage" class="btn btn-primary" [ngClass]="{'btn-secondary':loginForm.invalid||errorMessage,'btn-primary':loginForm.valid}">Send<span *ngIf="isSending">ing <span class="loader-inline mhs"></span></span></button>
     </div>
     <p *ngIf="!isSending && errorMessage" class="alert alert-danger">

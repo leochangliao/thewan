@@ -105,7 +105,6 @@ export class UtilityService {
 
     setCacheData(key:string, data:any) {
         if(this.cacheData[key]) {
-            console.log(key, data)
             this.cacheData[key].data = data;
         }
     }
