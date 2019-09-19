@@ -22,12 +22,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {}
 
-  private initSending() {
-    this.isSending = true;
-  }
-
   onSubmit() {
-    this.initSending();
+    this.isSending = true;
     this.utility.login(this.postData).subscribe(
       resp => {
         this.isSending = false;
