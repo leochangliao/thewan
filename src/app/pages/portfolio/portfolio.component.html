@@ -37,7 +37,7 @@
                     </tr>
                     <tr>
                         <td><img src="assets/images/icon/checklist5.png" class="status-icon"></td>
-                        <td>{{p.detail?.comment}}</td>
+                        <td><div [innerHtml]="trustedHtml(p.detail?.comment)"></div></td>
                     </tr>          
                 </table>
             </div>

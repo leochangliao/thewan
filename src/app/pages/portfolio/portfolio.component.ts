@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer} from '@angular/platform-browser';
 import { UtilityService } from '../../shared/utility.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class PortfolioComponent implements OnInit {
   isLoading = false;
   portfolio : any = [];
   errorMessage: string = "";
-  constructor(private utilityService: UtilityService ) { }
+  constructor(private utilityService: UtilityService, protected sanitizer: DomSanitizer ) { }
 
   ngOnInit() {
     this.isLoading = true;
@@ -24,6 +25,10 @@ export class PortfolioComponent implements OnInit {
       }
       this.isLoading = false;
     });
+  }
+
+  trustedHtml(str:string) {
+    return this.sanitizer.bypassSecurityTrustHtml(str || '');
   }
 
 }
