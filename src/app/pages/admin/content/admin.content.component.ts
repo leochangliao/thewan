@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UtilityService, BookmarkAuth, DataUpdate, SecureData } from '../../../shared/utility.service';
 import { AdminService } from './admin.content.setting';
 
@@ -9,10 +9,6 @@ import { AdminService } from './admin.content.setting';
 })
 
 export class AdminContentComponent implements OnInit {
-  @ViewChild('portfolioElm',{static: false}) portfolioElm: ElementRef;
-  @ViewChild('resumeElm',{static: false}) resumeElm: ElementRef;
-  @ViewChild('bookmarkElm',{static: false}) bookmarkElm: ElementRef;
-  @ViewChild('messageElm',{static: false}) messageElm: ElementRef;
 
   uiHandler = {
     tabs : AdminService.setting.tabs,
@@ -110,29 +106,16 @@ export class AdminContentComponent implements OnInit {
     let payload:DataUpdate = {
       token: this.uiHandler.token,
       type: tab.name,
-      data: null
+      data: tab.data
     };
-    switch(tab.name){
-      case 'resume':
-        payload.data = this.utilityService.parseJsonString(this.resumeElm.nativeElement.value);
-        break;
-      case 'portfolio':
-        payload.data = this.utilityService.parseJsonString(this.portfolioElm.nativeElement.value);
-        break;
-      case 'bookmark':
-        payload.data = this.utilityService.parseJsonString(this.bookmarkElm.nativeElement.value);
-        break;
-      case 'message':
-        payload.data = this.utilityService.parseJsonString(this.messageElm.nativeElement.value);
-        break;
-    }
-    if(payload.data) {
+
+    if(payload.data && tab.name && payload.token) {
       tab.isSaving = true;
       this.utilityService.updateData(payload).subscribe(resp =>{
         tab.isSaving = false;
         tab.data = payload.data;
         this.utilityService.setCacheData(tab.name, payload.data);
-        alert("saved");
+        alert(tab.name.toUpperCase() + " - saved");
       }, error => {
         tab.isSaving = false;
         console.error('Api request failed:', payload);

@@ -33,11 +33,7 @@ export class LoginComponent implements OnInit {
         this.loggedinHandler.emit(resp);
       },
       error => {
-        if(error && error.message){
-          this.errorMessage = error.message;
-        } else {
-          this.errorMessage = "Invalid user and password, please try again later.";
-        }
+        this.errorMessage = "Invalid user and password, please try again later.";
         this.isSending = false;
       }
     );

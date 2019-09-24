@@ -44,7 +44,7 @@
         </label>
         <button type="submit" [disabled]="loginForm.invalid || isSending || errorMessage" class="btn btn-primary" [ngClass]="{'btn-secondary':loginForm.invalid||errorMessage,'btn-primary':loginForm.valid}">Send<span *ngIf="isSending">ing <span class="loader-inline mhs"></span></span></button>
     </div>
-    <p *ngIf="!isSending && errorMessage" class="alert alert-danger">
+    <p *ngIf="!isSending && errorMessage" class="text-center alert alert-danger mtm">
         <span class="font-s">{{errorMessage}}</span>
     </p>
 </form>

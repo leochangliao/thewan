@@ -8,27 +8,15 @@
 </ul>
 <div class="active-content" [ngSwitch]="uiHandler.activeTabIndex">
     <div *ngSwitchCase="0">
-        <textarea #portfolioElm class="form-control font-code">{{uiHandler.tabs[0].data | json}}</textarea>
-        <div class="text-right" *ngIf="!uiHandler.tabs[0].isLoading && uiHandler.token">
-            <button class="btn btn-primary mtm" [disabled]="uiHandler.tabs[0].isSaving" (click)="updateData(uiHandler.tabs[0])">Save</button>
-        </div>
+        <admin-portfolio [tab]="uiHandler.tabs[0]" (onSave)="updateData($event)"></admin-portfolio>
     </div>
     <div *ngSwitchCase="1">
-        <textarea #resumeElm class="form-control font-code">{{uiHandler.tabs[1].data | json}}</textarea>
-        <div class="text-right" *ngIf="!uiHandler.tabs[1].isLoading && uiHandler.token">
-            <button class="btn btn-primary mtm" [disabled]="uiHandler.tabs[1].isSaving" (click)="updateData(uiHandler.tabs[1])">Save</button>
-        </div>
+        <admin-resume [tab]="uiHandler.tabs[1]" (onSave)="updateData($event)"></admin-resume>
     </div>
     <div *ngSwitchCase="2">
-        <textarea #bookmarkElm class="form-control font-code">{{uiHandler.tabs[2].data | json}}</textarea>
-        <div class="text-right" *ngIf="!uiHandler.tabs[2].isLoading && uiHandler.token">
-            <button class="btn btn-primary mtm" [disabled]="uiHandler.tabs[2].isSaving" (click)="updateData(uiHandler.tabs[2])">Save</button>
-        </div>
+        <admin-bookmark [tab]="uiHandler.tabs[2]" (onSave)="updateData($event)"></admin-bookmark>
     </div>
     <div *ngSwitchCase="3">
-        <textarea #messageElm class="form-control font-code">{{uiHandler.tabs[3].data | json}}</textarea>
-        <div class="text-right" *ngIf="!uiHandler.tabs[3].isLoading && uiHandler.token">
-            <button class="btn btn-primary mtm" [disabled]="uiHandler.tabs[3].isSaving" (click)="updateData(uiHandler.tabs[3])">Save</button>
-        </div>
+        <admin-message [tab]="uiHandler.tabs[3]" (onSave)="updateData($event)"></admin-message>
     </div>
 </div>

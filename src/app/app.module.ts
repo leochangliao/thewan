@@ -16,6 +16,10 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { AdminComponent } from './pages/admin/admin.component';
 import { LoginComponent } from './pages/admin/login/login.component';
 import { AdminContentComponent } from './pages/admin/content/admin.content.component';
+import { AdminBookmarkComponent } from './pages/admin/content/bookmark/bookmark.component';
+import { AdminPortfolioComponent } from './pages/admin/content/portfolio/portfolio.component';
+import { AdminResumeComponent } from './pages/admin/content/resume/resume.component';
+import { AdminMessageComponent } from './pages/admin/content/message/message.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +33,11 @@ import { AdminContentComponent } from './pages/admin/content/admin.content.compo
     PageNotFoundComponent,
     AdminComponent,
     LoginComponent,
-    AdminContentComponent
+    AdminContentComponent,
+    AdminBookmarkComponent,
+    AdminPortfolioComponent,
+    AdminResumeComponent,
+    AdminMessageComponent
   ],
   imports: [
     FormsModule,

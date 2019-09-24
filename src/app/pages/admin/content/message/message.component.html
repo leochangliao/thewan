@@ -1,0 +1,4 @@
+<textarea #textareaElm class="form-control font-code json">{{tab.data | json}}</textarea>
+<div class="text-right" *ngIf="!tab.isLoading && tab.data">
+    <button class="btn btn-primary mtm" [disabled]="tab.isSaving" (click)="save(tab)">Save</button>
+</div>

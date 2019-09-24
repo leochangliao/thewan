@@ -159,7 +159,11 @@ ul {
 .font-xs {
     font-size: 13px;
 }
-
+textarea.json, textarea.json:focus{
+    min-height: 350px;
+    color: #00ff00;
+    background-color: black;
+}
 .disable-text-selection {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
