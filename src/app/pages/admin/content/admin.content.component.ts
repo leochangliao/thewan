@@ -11,15 +11,25 @@ import { AdminService } from './admin.content.setting';
 export class AdminContentComponent implements OnInit {
 
   uiHandler = {
+    isLoading: false,
     tabs : AdminService.setting.tabs,
-    activeTabIndex: 0,
+    activeTab: 'portfolio',
     token: this.utilityService.token
   }
 
   constructor(private utilityService:UtilityService) { }
 
   ngOnInit() {
-    this.setActiveTab(this.uiHandler.tabs[0], 0);
+    this.setActiveTab(this.uiHandler.tabs[0]);
+  }
+
+  getTab(name:string) {
+    for(let tab of this.uiHandler.tabs) {
+      if(tab.name === name) {
+        return tab;
+      }
+    }
+    return {};
   }
 
   resetTabs() {
@@ -28,76 +38,76 @@ export class AdminContentComponent implements OnInit {
     }
   }
 
-  setActiveTab(tab:any, index) {
+  setActiveTab(tab:any) {
     this.resetTabs();
     tab.active = true;
-    this.uiHandler.activeTabIndex = index;
-    switch(index) {
-      case 0:
-        this.getPortfolio();
+    this.uiHandler.activeTab = tab.name;
+    switch(tab.name) {
+      case 'portfolio':
+        this.getPortfolio(tab);
         break;
-      case 1:
-        this.getResume();
+      case 'resume':
+        this.getResume(tab);
         break;
-      case 2:
-        this.getBookmark();
+      case 'bookmark':
+        this.getBookmark(tab);
         break;
-      case 3:
-        this.getMessage();
+      case 'message':
+        this.getMessage(tab);
         break;
     }
   }
 
-  getPortfolio() {
-    if(!this.uiHandler.tabs[0].data){
-      this.uiHandler.tabs[0].isLoading = true;
+  getPortfolio(tab:any) {
+    if(!tab.data){
+      this.uiHandler.isLoading = true;
       this.utilityService.getPortfolio().subscribe(resp =>{
-        this.uiHandler.tabs[0].isLoading = false;
-        this.uiHandler.tabs[0].data = resp || [];
+        this.uiHandler.isLoading = false;
+        tab.data = resp || [];
       }, error => {
-        this.uiHandler.tabs[0].isLoading = false;
+        this.uiHandler.isLoading = false;
       });
     }
   }
-  getResume() {
-    if(!this.uiHandler.tabs[1].data){
-      this.uiHandler.tabs[1].isLoading = true;
+  getResume(tab:any) {
+    if(!tab.data){
+      this.uiHandler.isLoading = true;
       this.utilityService.getResume().subscribe(resp =>{
-        this.uiHandler.tabs[1].isLoading = false;
-        this.uiHandler.tabs[1].data = resp || [];
+        this.uiHandler.isLoading = false;
+        tab.data = resp || [];
       }, error => {
-        this.uiHandler.tabs[1].isLoading = false;
+        this.uiHandler.isLoading = false;
       });
     }
   }
 
-  getBookmark() {
-    if(!this.uiHandler.tabs[2].data && this.uiHandler.tabs[2].passcode) {
+  getBookmark(tab:any) {
+    if(!tab.data && tab.passcode) {
       let passcodeAuth:BookmarkAuth = {
-        passcode: this.uiHandler.tabs[2].passcode
+        passcode: tab.passcode
       }
-      this.uiHandler.tabs[2].isLoading = true;
+      this.uiHandler.isLoading = true;
       this.utilityService.getBookmark(passcodeAuth).subscribe(resp =>{
-        this.uiHandler.tabs[2].isLoading = false;
-        this.uiHandler.tabs[2].data = resp || [];
+        this.uiHandler.isLoading = false;
+        tab.data = resp || [];
       }, error => {
-        this.uiHandler.tabs[2].isLoading = false;
+        this.uiHandler.isLoading = false;
       });
     }
   }
 
-  getMessage() {
-    if(!this.uiHandler.tabs[3].data){
+  getMessage(tab:any) {
+    if(!tab.data){
       let payload:SecureData = {
         token: this.uiHandler.token,
         type: 'message'
       };
-      this.uiHandler.tabs[3].isLoading = true;
+      this.uiHandler.isLoading = true;
       this.utilityService.getSecureData(payload).subscribe(resp =>{
-        this.uiHandler.tabs[3].isLoading = false;
-        this.uiHandler.tabs[3].data = resp || [];
+        this.uiHandler.isLoading = false;
+        tab.data = resp || [];
       }, error => {
-        this.uiHandler.tabs[3].isLoading = false;
+        this.uiHandler.isLoading = false;
       });
     }
   }

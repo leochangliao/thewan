@@ -172,6 +172,15 @@ textarea.json, textarea.json:focus{
     -ms-user-select: none;
     user-select: none;
 }
+/* misc */
+.toggle-btn {
+    border: 1px solid #999;
+    margin: 0 1em;
+    height: 50px;
+    padding: 5px;
+    display: inline-block;
+    border-radius: 5px;
+}
 
 /* animation */
 .animation {

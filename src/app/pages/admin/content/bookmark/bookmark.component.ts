@@ -12,6 +12,9 @@ export class AdminBookmarkComponent implements OnInit {
   @ViewChild('textareaElm',{static: false}) textareaElm: ElementRef;
   @Input() tab:any;
   @Output() onSave = new EventEmitter();
+  uiHandler = {
+    ui: false
+  };
   constructor(private utilityService:UtilityService) { }
 
   ngOnInit() {}

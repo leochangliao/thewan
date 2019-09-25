@@ -1,17 +1,34 @@
+.loader-inline {
+    position: absolute;
+    top: 15px;
+    right: 0;
+}
 ul {
     border-bottom: 1px solid orange;
+    &.loading {
+        border-bottom: 1px solid #999;
+    }
     li {
         padding: .5em 1em;
         margin-bottom: -1px;
         cursor: pointer;
         color: #999;
+        border: 1px solid transparent;
+        border-top: 2px solid transparent;
         &.active {
             color: black;
             background-color: white;
             border: 1px solid orange;
             border-top: 2px solid orange;
-            border-bottom: 0;
             border-radius: 5px 5px 0 0;
+            border-bottom: 0;
+            &.loading {
+                color: #666;
+                background-color: white;
+                border: 1px solid #999;
+                border-top: 2px solid #999;
+                border-bottom: 0;
+            }
         }
         &:hover {
             color: black;
@@ -22,4 +39,5 @@ ul {
 .active-content {
     padding:1em;
     text-align: left;
+    min-height: 500px;
 }
