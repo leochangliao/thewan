@@ -1,4 +1,5 @@
-<div class="text-right mts mbm" *ngIf="!tab.isLoading && tab.data">
+<div class="text-right mts mbm position-relative">
+    <div class="disable-controls" *ngIf="tab.isLoading || !tab.data"></div>
     <span class="toggle-btn">
        <button class="btn" [ngClass]="{'btn-success':!rawView}" (click)="toggleView(false)">UI</button>
         <button class="btn" [ngClass]="{'btn-success':rawView}" (click)="toggleView(true)">RAW</button>
