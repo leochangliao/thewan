@@ -20,6 +20,7 @@ import { AdminBookmarkComponent } from './pages/admin/content/bookmark/bookmark.
 import { AdminPortfolioComponent } from './pages/admin/content/portfolio/portfolio.component';
 import { AdminResumeComponent } from './pages/admin/content/resume/resume.component';
 import { AdminMessageComponent } from './pages/admin/content/message/message.component';
+import { AdminControlComponent } from './pages/admin/control/control.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AdminMessageComponent } from './pages/admin/content/message/message.com
     AdminBookmarkComponent,
     AdminPortfolioComponent,
     AdminResumeComponent,
-    AdminMessageComponent
+    AdminMessageComponent,
+    AdminControlComponent
   ],
   imports: [
     FormsModule,

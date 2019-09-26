@@ -1,9 +1,2 @@
-<div class="text-right mts mbm" *ngIf="!tab.isLoading && tab.data">
-    <span class="toggle-btn">
-       <button class="btn" [ngClass]="{'btn-success':uiHandler.ui}" (click)="uiHandler.ui=true">UI</button>
-        <button class="btn" [ngClass]="{'btn-success':!uiHandler.ui}" (click)="uiHandler.ui=false">RAW</button>
-    </span>
-
-    <button class="btn btn-primary" [disabled]="tab.isSaving" (click)="save(tab)">Save</button>
-</div>
-<textarea *ngIf="!uiHandler.ui" #textareaElm class="form-control font-code json">{{(tab.data | json )}}</textarea>
+<admin-control (onSave)="save(tab)" (onToggle)="toggleView($event)" [tab]="tab" [rawView]="uiHandler.rawView"></admin-control>
+<textarea *ngIf="uiHandler.rawView" #textareaElm class="form-control font-code json">{{(tab.data | json )}}</textarea>

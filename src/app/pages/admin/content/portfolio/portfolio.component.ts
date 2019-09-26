@@ -12,11 +12,15 @@ export class AdminPortfolioComponent implements OnInit {
   @Input() tab:any;
   @Output() onSave = new EventEmitter();
   uiHandler = {
-    ui: false
+    rawView: true
   };
   constructor(private utilityService:UtilityService) { }
 
   ngOnInit() {}
+
+  toggleView(rawView:boolean) {
+    this.uiHandler.rawView = rawView;
+  }
 
   save(tab:any) {
     tab.data = this.utilityService.parseJsonString(this.textareaElm.nativeElement.value);
