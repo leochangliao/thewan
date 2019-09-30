@@ -13,18 +13,32 @@ export class AdminBookmarkComponent implements OnInit {
   @Input() tab:any;
   @Output() onSave = new EventEmitter();
   uiHandler = {
-    rawView: true
+    rawView: false,
+    selectedGroup: {sites:[], id: null, title: null}
   }
   constructor(private utilityService:UtilityService) { }
 
   ngOnInit() {}
 
+  groupIsSelected(group:any) {
+    return this.uiHandler.selectedGroup.title === group.title;
+  }
+
+  setSelected(group:any) {
+    this.uiHandler.selectedGroup = group;
+  }
+
   toggleView(rawView:boolean) {
+    if(this.textareaElm && this.textareaElm.nativeElement) {
+      // coming from rawView: update tab data and reset selected group
+      this.tab.data = this.utilityService.parseJsonString(this.textareaElm.nativeElement.value);
+      this.uiHandler.selectedGroup = {sites:[], id: null, title: null};
+    }
     this.uiHandler.rawView = rawView;
   }
 
   save(tab:any) {
-    tab.data = this.utilityService.parseJsonString(this.textareaElm.nativeElement.value);
+    tab.data = this.textareaElm ? this.utilityService.parseJsonString(this.textareaElm.nativeElement.value) : this.tab.data;
     this.onSave.emit(tab);
   }
 }

@@ -1,0 +1,47 @@
+.group-panel {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    .group-list {
+        padding: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+        &:hover {
+            background-color: black;
+            color: white;
+        }
+        &.active {
+            background-color: rgb(218, 142, 0);
+            color: white;
+        }
+    }
+}
+.body-panel {
+    .panel-title i {
+        color: #aaa;
+    }
+    .bookmark {
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        padding: 10px 10px 0;
+        margin-bottom: 10px;
+        input {
+            margin-bottom: 10px;
+        }
+        table {
+            width:100%;
+            td:first-child {
+                width: 45px;
+                padding: 0 10px 10px 0;
+                fa {
+                    font-size: 25px !important;
+                }
+                img {
+                    width: 30px;
+                    height: 30px;
+                }
+            }
+        }
+    }
+}

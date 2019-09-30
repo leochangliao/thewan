@@ -1,2 +1,33 @@
 <admin-control (onSave)="save(tab)" (onToggle)="toggleView($event)" [tab]="tab" [rawView]="uiHandler.rawView"></admin-control>
 <textarea *ngIf="uiHandler.rawView" #textareaElm class="form-control font-code json">{{(tab.data | json )}}</textarea>
+<div *ngIf="!uiHandler.rawView" class="row">
+    <div class="col-md-3 group-panel mbm">
+        <div *ngFor="let g of tab.data" class="group-list" [title]="g.title + ' (' + group?.id + ')'" [ngClass]="{active:groupIsSelected(g)}" (click)="setSelected(g)">
+            {{g.title}}
+        </div>
+    </div>
+    <div class="col-md-9 body-panel">
+        <div class="row">
+            <div class="col-md-12 panel-title text-center mbm">
+                <input *ngIf="uiHandler.selectedGroup?.title" type="text" class="form-control font-m text-center" [(ngModel)]="uiHandler.selectedGroup.title" />
+                <h4 *ngIf="!uiHandler.selectedGroup?.title" class="mtm"><i>Please select a group from group panel</i></h4>
+            </div>
+            <div *ngFor="let s of uiHandler.selectedGroup.sites" class="col-md-6">
+                <div class="bookmark">
+                    <table>
+                        <tr>
+                            <td>
+                                <img *ngIf="!s.cssIcon && s.icon" [src]="'assets/'+s.icon" />
+                                <fa *ngIf="s.cssIcon" [name]="s.cssIcon.css" [ngStyle]="{'color':s.cssIcon.color}"></fa>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" [(ngModel)]="s.name" />
+                            </td>
+                        </tr>
+                    </table>
+                    <input type="text" class="form-control" [(ngModel)]="s.url" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
