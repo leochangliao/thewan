@@ -2,7 +2,7 @@
 <textarea *ngIf="uiHandler.rawView" #textareaElm class="form-control font-code json">{{(tab.data | json )}}</textarea>
 <div *ngIf="!uiHandler.rawView" class="row">
     <div class="col-md-3 group-panel mbm">
-        <div *ngFor="let g of tab.data" class="group-list" [title]="g.title + ' (' + group?.id + ')'" [ngClass]="{active:groupIsSelected(g)}" (click)="setSelected(g)">
+        <div *ngFor="let g of tab.data" class="group-list" [ngClass]="{active:groupIsSelected(g)}" (click)="setSelected(g)">
             {{g.title}}
         </div>
     </div>
