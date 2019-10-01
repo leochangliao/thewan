@@ -21,7 +21,7 @@ export class AdminBookmarkComponent implements OnInit {
   ngOnInit() {}
 
   groupIsSelected(group:any) {
-    return this.uiHandler.selectedGroup.title === group.title;
+    return this.uiHandler.selectedGroup.id === group.id;
   }
 
   setSelected(group:any) {
