@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -45,6 +46,7 @@ import { AdminControlComponent } from './pages/admin/control/control.component';
     FormsModule,
     HttpClientModule,
     BrowserModule,
+    DragDropModule,
     AngularFontAwesomeModule,
     AppRoutingModule
   ],

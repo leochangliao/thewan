@@ -10,6 +10,20 @@ Converting existing porfolio site from AngularJS to Angular 8
 
 https://thewan.ca/
 
+## Libraries:
+- drag and drop: https://material.angular.io/cdk/categories, npm i — save @angular/cdk, 
+- font awesome: https://www.npmjs.com/package/angular-font-awesome
+- Boostrap: https://getbootstrap.com/
+
+## angular.json:
+`
+"styles": [
+    "node_modules/bootstrap/dist/css/bootstrap.min.css",
+    "node_modules/font-awesome/css/font-awesome.css",
+    "src/styles.scss"
+]
+`
+
 ## Project planning (revised Aug25, 2019):
 
 - header,footer,body components

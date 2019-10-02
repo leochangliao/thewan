@@ -81,8 +81,8 @@ export class AdminContentComponent implements OnInit {
     }
   }
 
-  getBookmark(tab:any) {
-    if(!tab.data && tab.passcode) {
+  getBookmark(tab:any, reload:boolean=false) {
+    if(!tab.data && tab.passcode || reload) {
       let passcodeAuth:BookmarkAuth = {
         passcode: tab.passcode
       }

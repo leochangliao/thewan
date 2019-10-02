@@ -1,19 +1,43 @@
-<admin-control (onSave)="save(tab)" (onToggle)="toggleView($event)" [tab]="tab" [rawView]="uiHandler.rawView"></admin-control>
+<admin-control (onSave)="save(tab)" (onReload)="reload()" (onToggle)="toggleView($event)" [tab]="tab" [rawView]="uiHandler.rawView"></admin-control>
 <textarea *ngIf="uiHandler.rawView" #textareaElm class="form-control font-code json">{{(tab.data | json )}}</textarea>
 <div *ngIf="!uiHandler.rawView" class="row">
-    <div class="col-md-3 group-panel mbm">
-        <div *ngFor="let g of tab.data" class="group-list" [ngClass]="{active:groupIsSelected(g)}" (click)="setSelected(g)">
-            {{g.title}}
+    <div class="col-md-12 alert alert-warning text-center">
+        <strong>Tip!</strong> You can drag and drop to re-order group or its items
+    </div>
+    <div cdkDropList class="col-md-4 group-panel mbm" (cdkDropListDropped)="drop($event, tab.data)">
+        <div class="group-list text-center" (click)="add()">
+            <fa [name]="'plus'"></fa> Add new group
+        </div>
+        <div cdkDrag *ngFor="let g of tab.data">
+            <table>
+                <tr>
+                    <td>
+                        <div class="group-list" [ngClass]="{active:groupIsSelected(g),delete:g.delete}" (click)="setSelected(g)">
+                            {{g.title}}
+                        </div>
+                    </td>
+                    <td class="controls">
+                        <fa *ngIf="!g.delete" class="delete" [name]="'minus-circle'" (click)="flagDeleteGroup(g)"></fa>
+                        <fa *ngIf="g.delete" class="undo" [name]="'undo'" (click)="setUndoDeleteGroup(g)"></fa>
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
-    <div class="col-md-9 body-panel">
+    <div class="col-md-8 body-panel">
         <div class="row">
             <div class="col-md-12 panel-title text-center mbm">
-                <input *ngIf="uiHandler.selectedGroup?.title" type="text" class="form-control font-m text-center" [(ngModel)]="uiHandler.selectedGroup.title" />
-                <h4 *ngIf="!uiHandler.selectedGroup?.title" class="mtm"><i>Please select a group from group panel</i></h4>
+                <input *ngIf="uiHandler.selectedGroup?.id" type="text" class="form-control font-m text-center" [(ngModel)]="uiHandler.selectedGroup.title" />
+                <h4 *ngIf="!uiHandler.selectedGroup?.id" class="mtm"><i>Please select a group from group panel</i></h4>
             </div>
-            <div *ngFor="let s of uiHandler.selectedGroup.sites" class="col-md-6">
+        </div>
+        <div cdkDropList class="row" (cdkDropListDropped)="drop($event,uiHandler.selectedGroup.sites)">
+            <div cdkDrag *ngFor="let s of uiHandler.selectedGroup.sites" class="col-md-12">
                 <div class="bookmark">
+                    <div *cdkDragPreview style="background-color: white;">
+                        <img style="width: 50px; height:50px;" *ngIf="!s.cssIcon && s.icon" [src]="'assets/'+s.icon" />
+                        <fa style="font-size:50px;" *ngIf="s.cssIcon" [name]="s.cssIcon.css" [ngStyle]="{'color':s.cssIcon.color}"></fa>
+                    </div>
                     <table>
                         <tr>
                             <td>
