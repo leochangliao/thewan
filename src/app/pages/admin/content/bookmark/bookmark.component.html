@@ -1,7 +1,7 @@
 <admin-control (onSave)="save(tab)" (onToggle)="toggleView($event)" [tab]="tab" [rawView]="uiHandler.rawView"></admin-control>
 <textarea *ngIf="uiHandler.rawView" #textareaElm class="form-control font-code json">{{(tab.data | json )}}</textarea>
 <div *ngIf="!uiHandler.rawView" class="row">
-    <app-upload *ngIf="openUpload" (onClose)="onCloseUpload($event)" (onUpload)="onUploadFile($event)"></app-upload>
+    <app-upload *ngIf="openUpload" (onClose)="onCloseUpload()" (onUpload)="onUploadFile($event)"></app-upload>
     <div class="col-md-12 alert alert-warning text-center">
         <strong>Tip!</strong> You can drag and drop to re-order group or its items
     </div>

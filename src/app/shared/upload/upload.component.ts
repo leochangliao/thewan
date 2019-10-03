@@ -13,7 +13,7 @@ export class UploadComponent implements OnInit {
   fileUrl = "";
   invalid = false;
   error = false;
-  uplading = false;
+  uploading = false;
   maxFileSize = 99999;
   constructor(private utilityService:UtilityService) { }
 
@@ -41,15 +41,15 @@ export class UploadComponent implements OnInit {
   }
 
   uploadFile() {
-    this.uplading = true;
+    this.uploading = true;
     this.utilityService.uploadFile(this.fileToUpload).subscribe(
       resp=> {
       this.fileUrl = resp;
-      this.uplading = false;
+      this.uploading = false;
       this.fileToUpload = null;
     }, error=> {
       this.error = true;
-      this.uplading = false;
+      this.uploading = false;
     });
   }
 
