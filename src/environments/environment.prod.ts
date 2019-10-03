@@ -4,5 +4,6 @@ export const environment = {
   postMessageApi: 'assets/api/postmsg.php',
   loginApi: 'assets/api/login.php',
   updateDataApi: 'assets/api/updateData.php',
-  getDataApi: 'assets/api/getData.php'
+  getDataApi: 'assets/api/getData.php',
+  upload: 'assets/api/upload.php'
 };

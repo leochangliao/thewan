@@ -31,8 +31,11 @@
                                 <table>
                                     <tr>
                                         <td>
-                                            <img *ngIf="!link.cssIcon && link.icon" [src]="'assets/'+link.icon" />
-                                             <fa *ngIf="link.cssIcon" [name]="link.cssIcon.css" [ngStyle]="{'color':link.cssIcon.color}"></fa>
+                                            <span *ngIf="!link.cssIcon && link.icon">
+                                                <img *ngIf="!link.icon?.url" [src]="'assets/'+link.icon" />
+                                                <img *ngIf="link.icon?.url" [src]="link.icon.url" />
+                                            </span>
+                                            <fa *ngIf="link.cssIcon" [name]="link.cssIcon.css" [ngStyle]="{'color':link.cssIcon.color}"></fa>
                                         </td>
                                         <td><a [href]="link.url" target="_blank">{{link.name}}</a></td>
                                     </tr>

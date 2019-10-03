@@ -130,4 +130,11 @@ export class UtilityService {
     updateData(data:DataUpdate):Observable<any> {
         return this.http.post(this.settings.apiUrls.updateData, data);
     }
+
+    uploadFile(fileToUpload: File):Observable<any> {
+        const formData: FormData = new FormData();
+        formData.append('file', fileToUpload, fileToUpload.name);
+        formData.append('token',this.token);
+        return this.http.post(this.settings.apiUrls.upload, formData);
+    }
 }

@@ -8,7 +8,8 @@ export const environment = {
   postMessageApi: 'https://api.thewan.ca/postmsg.php',
   loginApi: 'https://api.thewan.ca/login.php',
   updateDataApi: 'https://api.thewan.ca/updateData.php',
-  getDataApi: 'https://api.thewan.ca/getData.php'
+  getDataApi: 'https://api.thewan.ca/getData.php',
+  upload: 'https://api.thewan.ca/upload.php'
 };
 
 /*

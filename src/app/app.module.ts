@@ -22,6 +22,7 @@ import { AdminPortfolioComponent } from './pages/admin/content/portfolio/portfol
 import { AdminResumeComponent } from './pages/admin/content/resume/resume.component';
 import { AdminMessageComponent } from './pages/admin/content/message/message.component';
 import { AdminControlComponent } from './pages/admin/control/control.component';
+import { UploadComponent } from './shared/upload/upload.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { AdminControlComponent } from './pages/admin/control/control.component';
     AdminPortfolioComponent,
     AdminResumeComponent,
     AdminMessageComponent,
-    AdminControlComponent
+    AdminControlComponent,
+    UploadComponent
   ],
   imports: [
     FormsModule,

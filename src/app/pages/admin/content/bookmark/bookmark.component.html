@@ -1,6 +1,7 @@
 <admin-control (onSave)="save(tab)" (onToggle)="toggleView($event)" [tab]="tab" [rawView]="uiHandler.rawView"></admin-control>
 <textarea *ngIf="uiHandler.rawView" #textareaElm class="form-control font-code json">{{(tab.data | json )}}</textarea>
 <div *ngIf="!uiHandler.rawView" class="row">
+    <app-upload *ngIf="openUpload" (onClose)="onCloseUpload($event)" (onUpload)="onUploadFile($event)"></app-upload>
     <div class="col-md-12 alert alert-warning text-center">
         <strong>Tip!</strong> You can drag and drop to re-order group or its items
     </div>
@@ -35,13 +36,19 @@
             <div cdkDrag *ngFor="let s of uiHandler.selectedGroup.sites" class="col-md-12">
                 <div class="bookmark">
                     <div *cdkDragPreview style="background-color: white;">
-                        <img style="width: 50px; height:50px;" *ngIf="!s.cssIcon && s.icon" [src]="'assets/'+s.icon" />
+                        <span *ngIf="!s.cssIcon && s.icon">
+                            <img *ngIf="!s.icon?.url" style="width: 50px; height:50px;"  [src]="'assets/'+s.icon" />
+                            <img *ngIf="s.icon?.url" style="width: 50px; height:50px;"  [src]="s.icon.url" />
+                        </span>
                         <fa style="font-size:50px;" *ngIf="s.cssIcon" [name]="s.cssIcon.css" [ngStyle]="{'color':s.cssIcon.color}"></fa>
                     </div>
                     <table>
                         <tr>
-                            <td>
-                                <img *ngIf="!s.cssIcon && s.icon" [src]="'assets/'+s.icon" />
+                            <td (click)="toggleUpload(s)">
+                                <span *ngIf="!s.cssIcon && s.icon">
+                                    <img *ngIf="!s.icon?.url" [src]="'assets/'+s.icon" />
+                                    <img *ngIf="s.icon?.url" [src]="s.icon.url" />
+                                </span>
                                 <fa *ngIf="s.cssIcon" [name]="s.cssIcon.css" [ngStyle]="{'color':s.cssIcon.color}"></fa>
                             </td>
                             <td>

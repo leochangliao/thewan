@@ -1,0 +1,35 @@
+<div class="upload-content">
+    <table>
+        <tr>
+            <td>
+                <input type="file" id="file" name="file" (change)="onUploadFile($event.target.files)" />
+            </td>
+            <td>
+                <button (click)="uploadFile()" [disabled]="!fileToUpload && !uploading">Upload</button>
+            </td>
+        </tr>
+    </table>
+    <hr>
+    <div class="result text-center" *ngIf="uploading">
+        Uploading <span class="loader-inline"></span>
+    </div>
+    <div class="result" *ngIf="!uploading">
+        <div class="text-center" *ngIf="fileUrl">
+            <img [src]="fileUrl" />
+            <textarea class="form-control mhs" readonly>{{fileUrl}}</textarea>
+        </div>
+        <div class="alert alert-danger" *ngIf="error">
+            <b>Fail to upload:</b><br>
+            Please make sure file size is less than {{maxFileSize}} KB.
+        </div>
+        <div class="alert alert-warning" *ngIf="invalid">
+            <b>Invalid File:</b><br>
+            Please select an image file with file size less than {{maxFileSize}} KB.
+        </div>
+    </div>
+    <hr>
+    <div class="text-center controls">
+        <button class="btn btn-primary mrs" (click)="use()" *ngIf="fileUrl">Use</button>
+        <button class="btn btn-secondary" (click)="close()">Close</button>
+    </div>
+</div>

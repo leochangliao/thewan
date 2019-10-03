@@ -16,6 +16,8 @@ export class AdminBookmarkComponent implements OnInit {
     rawView: false,
     selectedGroup: {sites:[], id: null, title: null}
   };
+  openUpload = false;
+  currentBookMark = {icon:{}};
   originalData = [];
   constructor(private utilityService:UtilityService) { }
 
@@ -79,5 +81,18 @@ export class AdminBookmarkComponent implements OnInit {
   save(tab:any) {
     tab.data = this.textareaElm ? this.utilityService.parseJsonString(this.textareaElm.nativeElement.value) : this.tab.data;
     this.onSave.emit(tab);
+  }
+
+  toggleUpload(bookmark:any) {
+    this.openUpload = true;
+    this.currentBookMark = bookmark;
+  }
+
+  onCloseUpload() {
+    this.openUpload = false;
+  }
+
+  onUploadFile(url:string) {
+    this.currentBookMark.icon = {url:url};
   }
 }

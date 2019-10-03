@@ -11,7 +11,8 @@ export class AppSettings {
         message: environment.postMessageApi,
         login: environment.loginApi,
         updateData: environment.updateDataApi,
-        getData: environment.getDataApi
+        getData: environment.getDataApi,
+        upload: environment.upload
     };
     imagePath:string = 'assets/images/';
 }
