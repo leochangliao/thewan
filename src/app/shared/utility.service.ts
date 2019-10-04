@@ -43,6 +43,10 @@ export class UtilityService {
         bookmark: {
             observable: null,
             data: null
+        },
+        assets: {
+            observable: null,
+            data: null        
         }
     }
     public token:string = "";
@@ -91,6 +95,9 @@ export class UtilityService {
             this.cacheData[key].observable = null;
             this.cacheData[key].data = null;
         }
+    }
+    getAssets():Observable<any> {
+        return this.getHttpRequest(this.cacheData.assets, this.settings.apiUrls.assets);
     }
 
     getPortfolio():Observable<any> {

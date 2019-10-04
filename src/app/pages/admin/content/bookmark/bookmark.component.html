@@ -1,7 +1,7 @@
 <admin-control (onSave)="save(tab)" (onToggle)="toggleView($event)" [tab]="tab" [rawView]="uiHandler.rawView"></admin-control>
 <textarea *ngIf="uiHandler.rawView" #textareaElm class="form-control font-code json">{{(tab.data | json )}}</textarea>
 <div *ngIf="!uiHandler.rawView" class="row">
-    <app-upload *ngIf="openUpload" (onClose)="onCloseUpload()" (onUpload)="onUploadFile($event)"></app-upload>
+    <assets-manager *ngIf="openUpload" (onClose)="onCloseUpload()" (onUpload)="onUploadFile($event)"></assets-manager>
     <div class="col-md-12 alert alert-warning text-center">
         <strong>Tip!</strong> You can drag and drop to re-order group or its items
     </div>
@@ -30,6 +30,9 @@
             <div class="col-md-12 panel-title text-center mbm">
                 <input *ngIf="uiHandler.selectedGroup?.id" type="text" class="form-control font-m text-center" [(ngModel)]="uiHandler.selectedGroup.title" />
                 <h4 *ngIf="!uiHandler.selectedGroup?.id" class="mtm"><i>Please select a group from group panel</i></h4>
+                <button *ngIf="uiHandler.selectedGroup?.id" class="text-center btn btn-success mtm" (click)="addBookmark()">
+                    <fa [name]="'plus'"></fa> Add new site
+                </button>
             </div>
         </div>
         <div cdkDropList class="row" (cdkDropListDropped)="drop($event,uiHandler.selectedGroup.sites)">

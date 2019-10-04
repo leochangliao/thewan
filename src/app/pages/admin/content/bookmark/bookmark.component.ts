@@ -60,6 +60,18 @@ export class AdminBookmarkComponent implements OnInit {
     }
   }
 
+  // add new bookmark
+  addBookmark() {
+    const newSite = {
+      id: 's' + Math.floor(Date.now() / 1000),
+      url: "http://",
+      name: "NewSite",
+      icon: "images/icon/0_httpicon.png"
+    }
+    this.uiHandler.selectedGroup.sites.unshift(newSite);
+  }
+
+  // add new group
   add() {
     const newGroup = {
       id: Math.floor(Date.now() / 1000),

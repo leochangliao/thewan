@@ -1,0 +1,79 @@
+.assets-manager {
+    position: fixed;
+    top:1em;
+    right: 1em;
+    background-color: white;
+    padding: 1em;
+    width: 300px;
+    height: 380px;
+    border-radius: 5px;
+    z-index: 9999;
+    box-shadow: 3px 3px 10px;
+    font-size: 12px;
+    .content-body {
+        height: 220px;
+        padding: 1em;
+        overflow: hidden;
+        overflow-y: auto;
+        .assets {
+            .img-preview {
+                height: 50px;
+                img {
+                    max-height: 50px;
+                }
+            }
+            .fileList {
+                height: 100px;
+                overflow: hidden;
+                overflow-y: auto;
+            }
+        }
+    }
+    table {
+        width: 100%;
+        td:first-child {
+            input {
+                width: 200px;
+            }
+        }
+    }
+    .result {
+        img {
+            max-width: 80px;
+        }
+        textarea {
+            font-size: 12px;
+            margin: 1em 0;
+        }
+    }
+    .controls {
+        button {
+            font-size: 12px;
+        }
+    }
+}
+ul.nav-tabs {
+    border-bottom: 1px solid orange;
+    &.loading {
+        border-bottom: 1px solid #999;
+    }
+    li {
+        padding: .5em 1em;
+        margin-bottom: -1px;
+        cursor: pointer;
+        color: #999;
+        border: 1px solid transparent;
+        border-top: 2px solid transparent;
+        &.active {
+            color: black;
+            background-color: white;
+            border: 1px solid orange;
+            border-top: 2px solid orange;
+            border-radius: 5px 5px 0 0;
+            border-bottom: 0;
+        }
+        &:hover {
+            color: black;
+        }
+    }
+}

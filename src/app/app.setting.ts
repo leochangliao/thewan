@@ -12,7 +12,8 @@ export class AppSettings {
         login: environment.loginApi,
         updateData: environment.updateDataApi,
         getData: environment.getDataApi,
-        upload: environment.upload
+        upload: environment.upload,
+        assets : 'https://api.thewan.ca/assets.php'
     };
     imagePath:string = 'assets/images/';
 }

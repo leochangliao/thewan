@@ -22,7 +22,7 @@ import { AdminPortfolioComponent } from './pages/admin/content/portfolio/portfol
 import { AdminResumeComponent } from './pages/admin/content/resume/resume.component';
 import { AdminMessageComponent } from './pages/admin/content/message/message.component';
 import { AdminControlComponent } from './pages/admin/control/control.component';
-import { UploadComponent } from './shared/upload/upload.component';
+import { AssetsManagerComponent } from './shared/assets/assets.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,7 @@ import { UploadComponent } from './shared/upload/upload.component';
     AdminResumeComponent,
     AdminMessageComponent,
     AdminControlComponent,
-    UploadComponent
+    AssetsManagerComponent
   ],
   imports: [
     FormsModule,

@@ -2,11 +2,11 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { UtilityService } from 'src/app/shared/utility.service';
 
 @Component({
-  selector: 'app-upload',
-  templateUrl: './upload.component.html',
-  styleUrls: ['./upload.component.scss']
+  selector: 'assets-manager',
+  templateUrl: './assets.component.html',
+  styleUrls: ['./assets.component.scss']
 })
-export class UploadComponent implements OnInit {
+export class AssetsManagerComponent implements OnInit {
   @Output() onClose = new EventEmitter();
   @Output() onUpload = new EventEmitter();
   fileToUpload: File = null;
@@ -15,9 +15,47 @@ export class UploadComponent implements OnInit {
   error = false;
   uploading = false;
   maxFileSize = 99999;
+  tabs = {
+    asset: {
+      name: "Assets",
+      active: true
+    },
+    fa: {
+      name: "Font Awesome",
+      active: false
+    },
+    upload: {
+      name: "Upload",
+      active: false
+    }
+  }
+  assets = {
+    selected: 'icon',
+    icon: [],
+    image: [],
+    upload: []
+  };
   constructor(private utilityService:UtilityService) { }
 
   ngOnInit() {
+    this.utilityService.getAssets().subscribe(
+      resp => {
+        this.assets.icon = Object.values(resp.asset.icon);
+        this.assets.image = Object.values(resp.asset.image);
+        this.assets.upload = Object.values(resp.upload);
+      }
+    );
+  }
+
+  private resetTabs() {
+    for(let key in this.tabs) {
+      this.tabs[key].active = false;
+    }
+  }
+
+  setActiveTab(name:string) {
+    this.resetTabs();
+    this.tabs[name].active = true;
   }
 
   resetFile() {
@@ -25,6 +63,10 @@ export class UploadComponent implements OnInit {
     this.error = false;
     this.invalid = false;
     this.fileToUpload = null;
+  }
+
+  previewAsset() {
+    return "http://localhost:4200/assets/images/icon/rbc.PNG";
   }
 
   onUploadFile(files: FileList) {
