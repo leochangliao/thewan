@@ -21,7 +21,7 @@ export const AdminService = {
               data: null,
               isLoading: false,
               isSaving: false,
-              passcode: localStorage.getItem('bookmark') || ""
+              passcode: localStorage.getItem('bookmark') || "9999"
             },
             {
               name: "message",

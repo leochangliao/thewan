@@ -1,4 +1,10 @@
 <div class="position-relative">
+    <div class="text-center" *ngIf="uiHandler.isDemo">
+        <h4>Demo Mode</h4>
+        <p>
+            In demo mode, you cannot Save nor view Messages.<br>But, everything else is working!
+        </p>
+    </div>
     <ul class="nav nav-tabs" [ngClass]="{'loading': uiHandler.isLoading}">
         <li *ngFor="let tab of uiHandler.tabs"
             class="text-capitalize"

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { UtilityService } from 'src/app/shared/utility.service';
 
 @Component({
   selector: 'admin-control',
@@ -14,9 +15,12 @@ export class AdminControlComponent implements OnInit {
   @Input() rawView:boolean;
   @Output() onToggle = new EventEmitter();
   @Output() onSave = new EventEmitter();
-  constructor() {}
+  isDemo = true;
+  constructor(private utility:UtilityService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.isDemo = this.utility.token === 'demo';
+  }
 
   toggleView(isRaw:boolean) {
     this.rawView = isRaw;

@@ -14,7 +14,8 @@ export class AdminContentComponent implements OnInit {
     isLoading: false,
     tabs : AdminService.setting.tabs,
     activeTab: 'portfolio',
-    token: this.utilityService.token
+    token: this.utilityService.token,
+    isDemo: this.utilityService.token === 'demo'
   }
 
   constructor(private utilityService:UtilityService) { }
@@ -84,7 +85,7 @@ export class AdminContentComponent implements OnInit {
   getBookmark(tab:any, reload:boolean=false) {
     if(!tab.data && tab.passcode || reload) {
       let passcodeAuth:BookmarkAuth = {
-        passcode: tab.passcode
+        passcode: this.uiHandler.isDemo ? '9999' : tab.passcode
       }
       this.uiHandler.isLoading = true;
       this.utilityService.getBookmark(passcodeAuth).subscribe(resp =>{

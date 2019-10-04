@@ -23,19 +23,23 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit() {
-    this.isSending = true;
-    this.utility.login(this.postData).subscribe(
-      resp => {
-        this.isSending = false;
-        if(this.keepLoggedin && resp.key) {
-          localStorage.setItem("token",resp.key);
+    if (this.postData.username === "demo" && this.postData.password === "demo"){
+      this.loggedinHandler.emit({key:"demo"});
+    } else {
+      this.isSending = true;
+      this.utility.login(this.postData).subscribe(
+        resp => {
+          this.isSending = false;
+          if(this.keepLoggedin && resp.key) {
+            localStorage.setItem("token",resp.key);
+          }
+          this.loggedinHandler.emit(resp);
+        },
+        error => {
+          this.errorMessage = "Invalid user and password, please try again later.";
+          this.isSending = false;
         }
-        this.loggedinHandler.emit(resp);
-      },
-      error => {
-        this.errorMessage = "Invalid user and password, please try again later.";
-        this.isSending = false;
-      }
-    );
+      );
+    }
   }
 }

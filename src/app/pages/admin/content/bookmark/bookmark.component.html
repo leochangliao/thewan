@@ -44,7 +44,7 @@
                     </div>
                     <table>
                         <tr>
-                            <td (click)="toggleUpload(s)">
+                            <td class="mouse-click" (click)="toggleUpload(s)">
                                 <span *ngIf="!s.cssIcon && s.icon">
                                     <img *ngIf="!s.icon?.url" [src]="'assets/'+s.icon" />
                                     <img *ngIf="s.icon?.url" [src]="s.icon.url" />

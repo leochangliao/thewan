@@ -26,5 +26,6 @@ export class AdminComponent implements OnInit {
     localStorage.removeItem('token');
     this.utility.token = "";
     this.loggedin = false;
+    location.reload();
   }
 }
