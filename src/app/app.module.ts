@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -48,6 +49,7 @@ import { AssetsManagerComponent } from './shared/assets/assets.component';
     FormsModule,
     HttpClientModule,
     BrowserModule,
+    NgbModule,
     DragDropModule,
     AngularFontAwesomeModule,
     AppRoutingModule
