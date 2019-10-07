@@ -83,34 +83,43 @@ export class AdminContentComponent implements OnInit {
   }
 
   getBookmark(tab:any, reload:boolean=false) {
-    if(!tab.data && tab.passcode || reload) {
-      let passcodeAuth:BookmarkAuth = {
-        passcode: this.uiHandler.isDemo ? '9999' : tab.passcode
+    if(!tab.data || reload) {
+      if(this.uiHandler.isDemo) {
+        let passcodeAuth:BookmarkAuth = {
+          passcode: '9999'
+        }
+        this.uiHandler.isLoading = true;
+        this.utilityService.getBookmark(passcodeAuth).subscribe(resp =>{
+          this.uiHandler.isLoading = false;
+          tab.data = resp || [];
+        }, error => {
+          this.uiHandler.isLoading = false;
+        });
+      } else {
+        this.getSecureData(tab, 'bookmark');
       }
-      this.uiHandler.isLoading = true;
-      this.utilityService.getBookmark(passcodeAuth).subscribe(resp =>{
-        this.uiHandler.isLoading = false;
-        tab.data = resp || [];
-      }, error => {
-        this.uiHandler.isLoading = false;
-      });
     }
+
   }
 
   getMessage(tab:any) {
-    if(!tab.data){
-      let payload:SecureData = {
-        token: this.uiHandler.token,
-        type: 'message'
-      };
-      this.uiHandler.isLoading = true;
-      this.utilityService.getSecureData(payload).subscribe(resp =>{
-        this.uiHandler.isLoading = false;
-        tab.data = resp || [];
-      }, error => {
-        this.uiHandler.isLoading = false;
-      });
+    if(!tab.data) {
+      this.getSecureData(tab, 'message');
     }
+  }
+
+  getSecureData(tab:any, type:string) {
+    let payload:SecureData = {
+      token: this.uiHandler.token,
+      type: type
+    };
+    this.uiHandler.isLoading = true;
+    this.utilityService.getSecureData(payload).subscribe(resp =>{
+      this.uiHandler.isLoading = false;
+      tab.data = resp || [];
+    }, error => {
+      this.uiHandler.isLoading = false;
+    });
   }
 
   updateData(tab:any) {
