@@ -8,20 +8,42 @@
     </ul>
     <!-- content -->
     <div class="content-body assets" *ngIf="tabs['asset'].active">
-        <select class="form-control" [(ngModel)]="assets.selected">
-            <option value="icon">Icons</option>
-            <option value="image">Images</option>
-            <option value="upload">Upload</option>
-        </select>
-        <div class="text-center img-preview">
-            <img *ngIf="previewAsset()" [src]="previewAsset()" />
+        <table>
+            <tr>
+                <td style="width: 130px;">
+                    <select class="form-control mbs" [disabled]="previewAsset()" [(ngModel)]="assets.selected">
+                        <option value="icon">Icons</option>
+                        <option value="image">Images</option>
+                        <option value="upload">Upload</option>
+                    </select>
+                </td>
+                <td>
+                    <input class="form-control search" type="text" placeholder="search?" [(ngModel)]="assets.search" style="margin: -5px 0 0 5px" />
+                </td>
+            </tr>
+        </table>
+        <div class="text-center img-preview mts" *ngIf="previewAsset()">
+            <img [src]="previewAsset()" class="mbm mts" />
+            <textarea class="form-control" readonly>{{fileUrl}}</textarea>
+            <button class="btn btn-warning mtm" (click)="closeAsset()"><fa name="angle-left"></fa> File List</button>
         </div>
-        <div class="fileList">
-
+        <div class="fileList mouse-click" *ngIf="!previewAsset()">
+            <div class="file" *ngFor="let file of filterAsset(assets[assets.selected])" (click)="setSelectedFile(file)">
+                {{file}}
+            </div>
         </div>
     </div>    
     <div class="content-body" *ngIf="tabs['fa'].active">
-        font awesome
+        <div class="text-center">
+            <a href="https://fontawesome.com/" target="_blank">https://fontawesome.com/</a>
+            <br><br>
+            Preview:<br>
+            <fa [name]="assets.fa.css" style="font-size:28px;" [ngStyle]="{color:assets.fa.color}"></fa>
+            <br><br>
+            Color:<br>
+            <input type="color" [(ngModel)]="assets.fa.color"><br><br>
+            <input class="text-center" type="text" style="font-size:15px" placeholder="fa name" [(ngModel)]="assets.fa.css" />
+        </div>
     </div>
     <div class="content-body" *ngIf="tabs['upload'].active">
         <table>
@@ -56,7 +78,7 @@
     <!-- control -->
     <hr>
     <div class="text-center controls">
-        <button class="btn btn-primary mrs" (click)="use()" *ngIf="fileUrl">Use</button>
+        <button class="btn btn-primary mrs" (click)="use()" *ngIf="showUse()">Use</button>
         <button class="btn btn-secondary" (click)="close()">Close</button>
     </div>
 </div>

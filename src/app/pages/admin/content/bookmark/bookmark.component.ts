@@ -17,7 +17,7 @@ export class AdminBookmarkComponent implements OnInit {
     selectedGroup: {sites:[], id: null, title: null}
   };
   openUpload = false;
-  currentBookMark = {icon:{}};
+  currentBookMark = {icon:{}, cssIcon:{}};
   originalData = [];
   constructor(private utilityService:UtilityService) { }
 
@@ -104,7 +104,12 @@ export class AdminBookmarkComponent implements OnInit {
     this.openUpload = false;
   }
 
-  onUploadFile(url:string) {
-    this.currentBookMark.icon = {url:url};
+  onUse(obj:any) {
+    if(obj.css) {
+      this.currentBookMark.cssIcon = obj;
+    } else {
+      this.currentBookMark.icon = {url:url};
+    }
+    
   }
 }

@@ -8,7 +8,7 @@ import { UtilityService } from 'src/app/shared/utility.service';
 })
 export class AssetsManagerComponent implements OnInit {
   @Output() onClose = new EventEmitter();
-  @Output() onUpload = new EventEmitter();
+  @Output() onUse = new EventEmitter();
   fileToUpload: File = null;
   fileUrl = "";
   invalid = false;
@@ -31,6 +31,11 @@ export class AssetsManagerComponent implements OnInit {
   }
   assets = {
     selected: 'icon',
+    search: '',
+    fa: {
+      css: "globe",
+      color: "#000000"
+    },
     icon: [],
     image: [],
     upload: []
@@ -53,7 +58,16 @@ export class AssetsManagerComponent implements OnInit {
     }
   }
 
+  filterAsset(itemArray) {
+    if(this.assets.search) {
+      return itemArray.filter(f=>f.indexOf(this.assets.search)>=0);
+    } else {
+      return itemArray;
+    }
+  }
+
   setActiveTab(name:string) {
+    this.fileUrl = null;
     this.resetTabs();
     this.tabs[name].active = true;
   }
@@ -65,10 +79,31 @@ export class AssetsManagerComponent implements OnInit {
     this.fileToUpload = null;
   }
 
-  previewAsset() {
-    return "http://localhost:4200/assets/images/icon/rbc.PNG";
+  setSelectedFile(file)  {
+    let prefix = "/assets/images/";
+    if(this.assets.selected === 'icon') {
+      prefix += "icon/";
+    } else if(this.assets.selected === 'upload') {
+      prefix = "https://assets.thewan.ca/upload/";
+    }
+    this.fileUrl = prefix + file;
   }
 
+  previewAsset() {
+    return this.fileUrl || null;
+  }
+
+  closeAsset() {
+    this.fileUrl = null;
+  }
+
+  showUse() {
+    if(this.fileUrl || (this.tabs.fa.active && this.assets.fa.css)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   onUploadFile(files: FileList) {
     this.resetFile();
     if(files.item && files.item(0)) {
@@ -85,10 +120,11 @@ export class AssetsManagerComponent implements OnInit {
   uploadFile() {
     this.uploading = true;
     this.utilityService.uploadFile(this.fileToUpload).subscribe(
-      resp=> {
-      this.fileUrl = resp;
+      resp => {
+      this.fileUrl = resp.url;
       this.uploading = false;
       this.fileToUpload = null;
+      this.assets.upload.unshift(resp.filename);
     }, error=> {
       this.error = true;
       this.uploading = false;
@@ -96,11 +132,17 @@ export class AssetsManagerComponent implements OnInit {
   }
 
   use() {
-    this.onUpload.emit(this.fileUrl);
+    if(this.tabs.fa.active) {
+      this.onUse.emit(this.assets.fa);
+    } else {
+      this.onUse.emit(this.fileUrl);
+    }
     this.close();
   }
 
   close() {
+    this.utilityService.deleteCacheData('assets');
+    this.fileUrl = null;
     this.onClose.emit();
   }
 }

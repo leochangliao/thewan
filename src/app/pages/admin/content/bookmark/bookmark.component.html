@@ -1,7 +1,7 @@
 <admin-control (onSave)="save(tab)" (onToggle)="toggleView($event)" [tab]="tab" [rawView]="uiHandler.rawView"></admin-control>
 <textarea *ngIf="uiHandler.rawView" #textareaElm class="form-control font-code json">{{(tab.data | json )}}</textarea>
 <div *ngIf="!uiHandler.rawView" class="row">
-    <assets-manager *ngIf="openUpload" (onClose)="onCloseUpload()" (onUpload)="onUploadFile($event)"></assets-manager>
+    <assets-manager *ngIf="openUpload" (onClose)="onCloseUpload()" (onUse)="onUse($event)"></assets-manager>
     <div class="col-md-12 alert alert-warning text-center">
         <strong>Tip!</strong> You can drag and drop to re-order group or its items
     </div>
@@ -18,8 +18,8 @@
                         </div>
                     </td>
                     <td class="controls">
-                        <fa *ngIf="!g.delete" class="delete" [name]="'minus-circle'" (click)="flagDeleteGroup(g)"></fa>
-                        <fa *ngIf="g.delete" class="undo" [name]="'undo'" (click)="setUndoDeleteGroup(g)"></fa>
+                        <fa *ngIf="!g.delete" class="delete" name="minus-circle" (click)="flagDeleteGroup(g)"></fa>
+                        <fa *ngIf="g.delete" class="undo" name="undo" (click)="setUndoDeleteGroup(g)"></fa>
                     </td>
                 </tr>
             </table>
