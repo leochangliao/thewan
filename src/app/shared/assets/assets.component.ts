@@ -7,6 +7,7 @@ import { UtilityService } from 'src/app/shared/utility.service';
   styleUrls: ['./assets.component.scss']
 })
 export class AssetsManagerComponent implements OnInit {
+  @Input() targetObj:any; // expecting {cssIcon:{css:"",color:""}} or {icon:{url:""}}
   @Output() onClose = new EventEmitter();
   @Output() onUse = new EventEmitter();
   fileToUpload: File = null;
@@ -34,7 +35,7 @@ export class AssetsManagerComponent implements OnInit {
     search: '',
     fa: {
       css: "globe",
-      color: "#000000"
+      color: "#0080ff"
     },
     icon: [],
     image: [],
@@ -135,7 +136,7 @@ export class AssetsManagerComponent implements OnInit {
     if(this.tabs.fa.active) {
       this.onUse.emit(this.assets.fa);
     } else {
-      this.onUse.emit(this.fileUrl);
+      this.onUse.emit({url:this.fileUrl});
     }
     this.close();
   }

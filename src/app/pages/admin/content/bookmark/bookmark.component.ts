@@ -66,7 +66,7 @@ export class AdminBookmarkComponent implements OnInit {
       id: 's' + Math.floor(Date.now() / 1000),
       url: "http://",
       name: "NewSite",
-      icon: "images/icon/0_httpicon.png"
+      cssIcon: {css:"globe", color: "#0080ff"}
     }
     this.uiHandler.selectedGroup.sites.unshift(newSite);
   }
@@ -106,9 +106,11 @@ export class AdminBookmarkComponent implements OnInit {
 
   onUse(obj:any) {
     if(obj.css) {
+      delete this.currentBookMark.icon;
       this.currentBookMark.cssIcon = obj;
     } else {
-      this.currentBookMark.icon = {url:url};
+      delete this.currentBookMark.cssIcon;
+      this.currentBookMark.icon = obj;
     }
     
   }
