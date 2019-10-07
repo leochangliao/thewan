@@ -90,7 +90,34 @@ export class AdminBookmarkComponent implements OnInit {
     delete group.delete;
   }
 
+  flagDeleteBookmark(bookmark:any) {
+    bookmark.delete = true;
+  }
+
+  setUndoDeleteBookmark(bookmark:any) {
+    delete bookmark.delete;
+  }
+
+  sanitizeData(tab:any) {
+    let i = tab.data.length
+    while (i--) {
+        if (tab.data[i].delete) {
+          tab.data.splice(i, 1);
+        }
+        else {
+          let j = tab.data[i].sites.length;
+          while(j--) {
+            if (tab.data[i].sites[j].delete) {
+              tab.data[i].sites.splice(j, 1);
+            }
+          }
+        }
+    }
+  }
+
+
   save(tab:any) {
+    this.sanitizeData(tab);
     tab.data = this.textareaElm ? this.utilityService.parseJsonString(this.textareaElm.nativeElement.value) : this.tab.data;
     this.onSave.emit(tab);
   }

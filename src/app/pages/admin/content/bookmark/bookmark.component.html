@@ -37,7 +37,9 @@
         </div>
         <div cdkDropList class="row" (cdkDropListDropped)="drop($event,uiHandler.selectedGroup.sites)">
             <div cdkDrag *ngFor="let s of uiHandler.selectedGroup.sites" class="col-md-12">
-                <div class="bookmark">
+                <div class="bookmark" [ngClass]="{'delete':s.delete}">
+                        <fa *ngIf="!s.delete" class="delete" name="minus-circle" (click)="flagDeleteBookmark(s)"></fa>
+                        <fa *ngIf="s.delete" class="undo" name="undo" (click)="setUndoDeleteBookmark(s)"></fa>
                     <div *cdkDragPreview style="background-color: white;">
                         <span *ngIf="!s.cssIcon && s.icon">
                             <img style="width: 50px; height:50px;"  [src]="s.icon.url" />

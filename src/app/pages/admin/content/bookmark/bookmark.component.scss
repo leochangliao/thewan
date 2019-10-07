@@ -93,5 +93,27 @@
         &:active {
             cursor: move;
         }
+        &.delete table, &.delete input{
+            opacity: .5;
+        }
+        .delete,.undo {
+            position: absolute;
+            right: 10px;
+            top: -13px;
+            opacity: .6;
+            cursor: pointer;
+        }
+        .delete {
+            color: red;
+            &:hover {
+                opacity: 1;
+            }
+        }
+        .undo {
+            color: green;
+            &:hover {
+                opacity: 1;
+            }
+        }
     }
 }
