@@ -1,5 +1,6 @@
 import { Component, ViewChild, OnInit, Input, Output, EventEmitter, ElementRef } from '@angular/core';
 import { UtilityService } from '../../../../shared/utility.service';
+import { ModalService } from '../../../../shared/modal/modalService';
 
 @Component({
   selector: 'admin-portfolio',
@@ -14,7 +15,7 @@ export class AdminPortfolioComponent implements OnInit {
   uiHandler = {
     rawView: true
   };
-  constructor(private utilityService:UtilityService) { }
+  constructor(private utilityService:UtilityService, private modalService: ModalService) { }
 
   ngOnInit() {}
 
@@ -22,8 +23,16 @@ export class AdminPortfolioComponent implements OnInit {
     this.uiHandler.rawView = rawView;
   }
 
+  sanitizeData(tab:any) {
+    // clean up data here
+  }
   save(tab:any) {
-    tab.data = this.utilityService.parseJsonString(this.textareaElm.nativeElement.value);
-    this.onSave.emit(tab);
+    this.modalService.confirm('','').result.then((result) => {
+      if(result) {
+        this.sanitizeData(tab);
+        tab.data = this.textareaElm ? this.utilityService.parseJsonString(this.textareaElm.nativeElement.value) : this.tab.data;
+        this.onSave.emit(tab);
+      }
+    }, (reason) => {});
   }
 }

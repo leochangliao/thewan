@@ -1,5 +1,6 @@
 import { Component, ViewChild, OnInit, Input, Output, EventEmitter, ElementRef } from '@angular/core';
 import { UtilityService } from '../../../../shared/utility.service';
+import { ModalService } from '../../../../shared/modal/modalService';
 
 @Component({
   selector: 'admin-bookmark',
@@ -19,7 +20,7 @@ export class AdminBookmarkComponent implements OnInit {
   openUpload = false;
   currentBookMark = {icon:{}, cssIcon:{}};
   originalData = [];
-  constructor(private utilityService:UtilityService) { }
+  constructor(private utilityService:UtilityService, private modalService: ModalService) {}
 
   ngOnInit() {
     this.originalData = this.tab.data;
@@ -45,7 +46,7 @@ export class AdminBookmarkComponent implements OnInit {
       if(_data) {
         this.tab.data = _data;
       } else {
-        alert('json data error, old data will be loaded in UI.');
+        this.modalService.alert('Data Error','json data error, old data will be loaded in UI.');
       }
       this.resetSelected(null);
     }
@@ -115,11 +116,14 @@ export class AdminBookmarkComponent implements OnInit {
     }
   }
 
-
   save(tab:any) {
-    this.sanitizeData(tab);
-    tab.data = this.textareaElm ? this.utilityService.parseJsonString(this.textareaElm.nativeElement.value) : this.tab.data;
-    this.onSave.emit(tab);
+    this.modalService.confirm('','').result.then((result) => {
+      if(result) {
+        this.sanitizeData(tab);
+        tab.data = this.textareaElm ? this.utilityService.parseJsonString(this.textareaElm.nativeElement.value) : this.tab.data;
+        this.onSave.emit(tab);
+      }
+    }, (reason) => {});
   }
 
   toggleUpload(bookmark:any) {
@@ -139,6 +143,5 @@ export class AdminBookmarkComponent implements OnInit {
       delete this.currentBookMark.cssIcon;
       this.currentBookMark.icon = obj;
     }
-    
   }
 }

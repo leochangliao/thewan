@@ -1,2 +1,7 @@
 <admin-control (onSave)="save(tab)" (onToggle)="toggleView($event)" [tab]="tab" [rawView]="uiHandler.rawView"></admin-control>
 <textarea *ngIf="uiHandler.rawView" #textareaElm class="form-control font-code json">{{(tab.data | json )}}</textarea>
+<div *ngIf="!uiHandler.rawView" class="row">
+    <div class="col-md-12">
+        <h2>under construction</h2>
+    </div>
+</div>

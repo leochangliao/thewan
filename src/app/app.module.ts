@@ -24,6 +24,8 @@ import { AdminResumeComponent } from './pages/admin/content/resume/resume.compon
 import { AdminMessageComponent } from './pages/admin/content/message/message.component';
 import { AdminControlComponent } from './pages/admin/control/control.component';
 import { AssetsManagerComponent } from './shared/assets/assets.component';
+import { ConfirmModal } from './shared/modal/confirm/confirm.component';
+import { AlertModal } from './shared/modal/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,13 @@ import { AssetsManagerComponent } from './shared/assets/assets.component';
     AdminResumeComponent,
     AdminMessageComponent,
     AdminControlComponent,
-    AssetsManagerComponent
+    AssetsManagerComponent,
+    ConfirmModal,
+    AlertModal
+  ],
+  entryComponents: [
+    AlertModal,
+    ConfirmModal
   ],
   imports: [
     FormsModule,

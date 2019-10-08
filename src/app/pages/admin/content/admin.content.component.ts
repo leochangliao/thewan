@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UtilityService, BookmarkAuth, DataUpdate, SecureData } from '../../../shared/utility.service';
 import { AdminService } from './admin.content.setting';
+import { ModalService } from '../../../shared/modal/modalService';
 
 @Component({
   selector: 'admin-content',
@@ -18,7 +19,7 @@ export class AdminContentComponent implements OnInit {
     isDemo: this.utilityService.token === 'demo'
   }
 
-  constructor(private utilityService:UtilityService) { }
+  constructor(private utilityService:UtilityService, private modalService: ModalService) { }
 
   ngOnInit() {
     this.setActiveTab(this.uiHandler.tabs[0]);
@@ -135,17 +136,17 @@ export class AdminContentComponent implements OnInit {
         tab.isSaving = false;
         tab.data = payload.data;
         this.utilityService.setCacheData(tab.name, payload.data);
-        alert(tab.name.toUpperCase() + " - saved");
+        this.modalService.alert("Saved",tab.name.toUpperCase() + " - successfully saved!");
       }, error => {
         tab.isSaving = false;
         console.error('Api request failed:', payload);
         console.error('Please logout and login again.');
         console.error(error);
-        alert("something wrong, please check console log");
+        this.modalService.alert("Api request failed","something wrong, please check console log");
       });
     } else {
       console.error('Invalid payload data:', payload);
-      alert("Invalid Data, please check console log");
+      this.modalService.alert("Invalid Data","Save failed, please check console log");
     }
   }
 
