@@ -26,6 +26,7 @@ export const AdminService = {
               name: "message",
               active: false,
               data: null,
+              counter: {},
               isLoading: false,
               isSaving: false
             }

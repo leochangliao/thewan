@@ -47,6 +47,10 @@ export class UtilityService {
         assets: {
             observable: null,
             data: null        
+        },
+        messsageCounter: {
+            observable: null,
+            data: null
         }
     }
     public token:string = "";
@@ -114,6 +118,10 @@ export class UtilityService {
         } else {
             return this.http.post(this.settings.apiUrls.bookmark, passcode);
         }
+    }
+
+    getMessageCounter():Observable<any> {
+        return this.getHttpRequest(this.cacheData.messsageCounter, this.settings.apiUrls.msgCounter);
     }
 
     setCacheData(key:string, data:any) {

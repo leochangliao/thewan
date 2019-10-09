@@ -11,6 +11,7 @@
             [ngClass]="{'active': tab.active, 'loading': uiHandler.isLoading}"
             (click)="setActiveTab(tab)">
             {{tab.name}}
+            <span *ngIf="tab.counter?.new"> ({{tab.counter.new}})</span>
         </li>
     </ul>
     <span class="loader-inline" *ngIf="uiHandler.isLoading"></span>

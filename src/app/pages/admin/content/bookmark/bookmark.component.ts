@@ -17,14 +17,13 @@ export class AdminBookmarkComponent implements OnInit {
     rawView: false,
     selectedGroup: {sites:[], id: null, title: null}
   };
+
   openUpload = false;
   currentBookMark = {icon:{}, cssIcon:{}};
-  originalData = [];
+
   constructor(private utilityService:UtilityService, private modalService: ModalService) {}
 
-  ngOnInit() {
-    this.originalData = this.tab.data;
-  }
+  ngOnInit() {}
 
   resetSelected(newid:string=null) {
     this.uiHandler.selectedGroup = {sites:[], id: newid, title: newid};
@@ -46,7 +45,7 @@ export class AdminBookmarkComponent implements OnInit {
       if(_data) {
         this.tab.data = _data;
       } else {
-        this.modalService.alert('Data Error','json data error, old data will be loaded in UI.');
+        this.modalService.alert('Data Error','json data error, previous data will be used in UI.');
       }
       this.resetSelected(null);
     }

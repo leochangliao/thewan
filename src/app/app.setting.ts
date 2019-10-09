@@ -13,7 +13,8 @@ export class AppSettings {
         updateData: environment.updateDataApi,
         getData: environment.getDataApi,
         upload: environment.upload,
-        assets : 'https://api.thewan.ca/assets.php'
+        assets : 'https://api.thewan.ca/assets.php',
+        msgCounter: 'https://api.thewan.ca/msgCount.php'
     };
     imagePath:string = 'assets/images/';
 }

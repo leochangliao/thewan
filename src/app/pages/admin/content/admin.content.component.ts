@@ -23,6 +23,16 @@ export class AdminContentComponent implements OnInit {
 
   ngOnInit() {
     this.setActiveTab(this.uiHandler.tabs[0]);
+    // set message tab counter
+    if(!this.uiHandler.isDemo) {
+      this.utilityService.getMessageCounter().subscribe(
+        resp=>{
+          let tab = this.getTab('message');
+          tab['counter'] = resp;
+        }
+      );
+    }
+
   }
 
   getTab(name:string) {
@@ -86,6 +96,7 @@ export class AdminContentComponent implements OnInit {
   getBookmark(tab:any, reload:boolean=false) {
     if(!tab.data || reload) {
       if(this.uiHandler.isDemo) {
+        this.utilityService.deleteCacheData('bookmark');
         let passcodeAuth:BookmarkAuth = {
           passcode: '9999'
         }
@@ -136,7 +147,11 @@ export class AdminContentComponent implements OnInit {
         tab.isSaving = false;
         tab.data = payload.data;
         this.utilityService.setCacheData(tab.name, payload.data);
-        this.modalService.alert("Saved",tab.name.toUpperCase() + " - successfully saved!");
+        if(!tab.silent) {
+          this.modalService.alert("Saved",tab.name.toUpperCase() + " - successfully saved!");
+        } else {
+          delete tab.silent;
+        }
       }, error => {
         tab.isSaving = false;
         console.error('Api request failed:', payload);

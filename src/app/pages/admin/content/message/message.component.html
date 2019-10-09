@@ -1,7 +1,38 @@
-<admin-control (onSave)="save(tab)" (onToggle)="toggleView($event)" [tab]="tab" [rawView]="uiHandler.rawView"></admin-control>
+<admin-control (onSave)="save(tab, false)" (onToggle)="toggleView($event)" [tab]="tab" [rawView]="uiHandler.rawView"></admin-control>
 <textarea *ngIf="uiHandler.rawView" #textareaElm class="form-control font-code json">{{(tab.data | json )}}</textarea>
 <div *ngIf="!uiHandler.rawView" class="row">
-    <div class="col-md-12">
-        <h2>under construction</h2>
+    <div class="col-md-12" *ngIf="tab.data?.length">
+        <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+            <ngb-panel *ngFor="let msg of tab.data" [id]="msg.id">
+              <ng-template ngbPanelHeader>
+                <div [ngClass]="{'strike':msg.delete}">
+                    <span [ngClass]="{'bold':!msg.read}">{{msg.username}}</span>
+                    <button ngbPanelToggle class="btn btn-sm btn-outline-primary ml-2 float-right" (click)="setRead(msg)">
+                        <fa name="arrows-v"></fa>
+                    </button>
+                    <button class="btn btn-sm ml-2 float-right controls" [ngClass]="{'btn-outline-success':msg.delete, 'btn-outline-danger':!msg.delete}" (click)="setDelete(msg)">
+                        <fa name="history" *ngIf="msg.delete"></fa>
+                        <fa name="trash" *ngIf="!msg.delete"></fa>
+                    </button>
+                    <span class="float-right">{{msg.timestamp*1000 | date:'yyyy-MMM-dd HH:mm'}}</span>
+                </div>
+              </ng-template>
+              <ng-template ngbPanelContent>
+                  <div>
+                    <p class="font-xs">
+                        <span>From: <b>{{msg.email}}</b> ({{msg.remote_address}})</span>
+                        <span class="pull-right">Read on: {{msg.read | date:'yyyy-MMM-dd HH:mm'}}</span>
+                    </p>
+                    <hr>
+                    <p>
+                        {{msg.message}}
+                    </p>
+                  </div>
+              </ng-template>
+            </ngb-panel>
+        </ngb-accordion>
+    </div>
+    <div class="col-md-12" *ngIf="!tab.data?.length">
+        <h4 class="no-message">No Message</h4>
     </div>
 </div>
