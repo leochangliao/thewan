@@ -4,6 +4,9 @@
     <p class="alert alert-danger">{{errorMessage}}</p>
 </div>
 <div *ngIf="!isLoading && resumeData.experience?.length" class="row mhm pal mtl text-left bg-white auto-opacity" (mouseover)="!isReady && setSkillBar()">
+    <div class="col-md-12 text-center resume-download">
+        <a href="assets/files/Leo_Resume_2020.pdf" target="_blank"><img src="assets/images/icon/download-adobe-pdf-icon.png" title="Download Resume"><br/></a>
+    </div>
     <div class="col-md-8">
         <h4>Experience</h4>
         <span class="under-line-short"></span>
