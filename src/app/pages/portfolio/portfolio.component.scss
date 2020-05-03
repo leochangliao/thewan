@@ -29,7 +29,10 @@ table {
     }
 }
 .fixed-height {
-    height: 520px;
+    // height: 520px;
+    border-radius: 10px;
+    height: auto;
+    border-radius: 10px;
     overflow: hidden;
     @media screen and (max-width: 992px) {
         height: auto;
