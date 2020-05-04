@@ -3,7 +3,7 @@
 <div *ngIf="errorMessage">
     <p class="alert alert-danger">{{errorMessage}}</p>
 </div>
-<div *ngIf="portfolio.length && !isLoading" class="row mtm">
+<div *ngIf="portfolio.length && !isLoading" class="row mtm display-flex">
     <div class="col-xl-4 col-lg-6 col-md-12 p-none" *ngFor="let p of portfolio">
         <div class="bg-white auto-opacity mvs mhm pam fixed-height">
             <div class="site-screenshot-div" [ngStyle]="{'background-image': 'url(' + p.img_url + ')'}"></div>
