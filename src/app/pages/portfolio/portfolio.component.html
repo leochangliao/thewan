@@ -25,6 +25,10 @@
                         <td>{{p.detail?.framework}}</td>
                     </tr>
                     <tr>
+                        <td><img src="assets/images/icon/design_2.png" class="status-icon"></td>
+                        <td>{{p.designed_by}}</td>
+                    </tr>                    
+                    <tr>
                         <td><img src="assets/images/icon/_github-512.png" class="status-icon"></td>
                         <td>
                             <div *ngIf="p.detail?.source?.url;else noSource">
