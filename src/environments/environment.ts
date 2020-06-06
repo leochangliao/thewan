@@ -4,12 +4,12 @@
 
 export const environment = {
   production: false,
-  bookmarkApi: 'https://api.thewan.ca/bookmark.php',
-  postMessageApi: 'https://api.thewan.ca/postmsg.php',
-  loginApi: 'https://api.thewan.ca/login.php',
-  updateDataApi: 'https://api.thewan.ca/updateData.php',
-  getDataApi: 'https://api.thewan.ca/getData.php',
-  upload: 'https://api.thewan.ca/upload.php'
+  bookmarkApi: '/assets/api/bookmark.php',
+  postMessageApi: '/assets/api/postmsg.php',
+  loginApi: '/assets/api/login.php',
+  updateDataApi: '/assets/api/updateData.php',
+  getDataApi: '/assets/api/getData.php',
+  upload: '/assets/api/upload.php'
 };
 
 /*

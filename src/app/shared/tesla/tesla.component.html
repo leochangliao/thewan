@@ -1,0 +1,17 @@
+<div class="t-btn" (click)="isActive = true">
+    <img src="https://assets.thewan.ca/private/tesla-x-lined.png" />
+</div>
+
+<div class="t-overlay" *ngIf="isActive">
+    <div class="t-app">
+        <div class="t-header">
+            <table>
+                <tr>
+                    <td class="t-logo"><img src="https://assets.thewan.ca/private/tesla-x-lined.png" /></td>
+                    <td><b>Tesla Web App</b></td>
+                    <td class="t-close" (click)="isActive = false">X</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

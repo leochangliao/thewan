@@ -26,6 +26,7 @@ import { AdminControlComponent } from './pages/admin/control/control.component';
 import { AssetsManagerComponent } from './shared/assets/assets.component';
 import { ConfirmModal } from './shared/modal/confirm/confirm.component';
 import { AlertModal } from './shared/modal/alert/alert.component';
+import { TeslaComponent } from './shared/tesla/tesla.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { AlertModal } from './shared/modal/alert/alert.component';
     AdminControlComponent,
     AssetsManagerComponent,
     ConfirmModal,
-    AlertModal
+    AlertModal,
+    TeslaComponent
   ],
   entryComponents: [
     AlertModal,

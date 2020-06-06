@@ -70,7 +70,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "thewan:build"
+            "browserTarget": "thewan:build",
+            "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
             "production": {

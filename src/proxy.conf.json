@@ -1,0 +1,10 @@
+{
+    "/assets/api": {
+      "target": "https://api.thewan.ca/",
+      "secure": true,
+      "pathRewrite": {
+        "^/assets/api": ""
+      },
+      "changeOrigin": true
+    }
+  }
