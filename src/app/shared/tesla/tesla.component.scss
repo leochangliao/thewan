@@ -20,6 +20,7 @@ img {
 }
 .t-overlay {
     z-index: 99999999;
+    visibility: hidden;
     position: fixed;
     top:0;
     left:0;
@@ -27,20 +28,35 @@ img {
     height: 100%;
     background-color: rgba(0,0,0,.5);
     text-align: center;
-    padding: 15px;
+    padding: 15px;    
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    &.show {
+        visibility: visible;
+    }
+    &.in {
+        opacity: 1;
+    }
     table {
         width: 100%;
     }
     .t-app {
         color: white;
-        display:inline-block;
-        width: 100%;
-        max-width: 350px;
-        height: 100%;
+        position:fixed;
+        left: 50%;
+        top: -800px;
+        margin-left: - 175px;
+        width: 350px;
+        height: 560px;
         padding: 10px;
         background-color: black;
         border-radius: 15px;
+        transition: top .5s ease-in-out;
+        &.in {
+            top: 20px;
+        }
         .t-header {
+            height: 41px;
             border-bottom: 1px solid #acacac;
             padding-bottom: 5px;
             .t-close {
@@ -55,10 +71,19 @@ img {
                     opacity: 1;
                 }
             }
+            .t-logo {
+                filter: invert(1);
+                width: 35px;
+            }
         }
-        .t-logo {
-            filter: invert(1);
-            width: 35px;
+        .t-footer {
+            height: 40px;
+            padding: 10px;
+            border-top: 1px solid #acacac;
+        }
+        .t-body {
+            height: 460px;
+            overflow: auto;
         }
 
     }
