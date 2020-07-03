@@ -41,7 +41,7 @@ img {
         width: 100%;
     }
     .t-app {
-        color: white;
+        color: #ccc;
         position:fixed;
         left: 50%;
         top: -800px;
@@ -82,8 +82,21 @@ img {
             border-top: 1px solid #acacac;
         }
         .t-body {
+            padding: 1em;
             height: 460px;
             overflow: auto;
+            h3 {
+                margin: 2em 0;
+            }
+            a {
+                font-size: 20px;
+                color: rgb(204, 53, 7);
+                text-decoration: none;
+                font-weight: bold;
+                &:hover {
+                    color: rgb(235, 52, 52);
+                }
+            }
         }
 
     }

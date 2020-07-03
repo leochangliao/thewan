@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeslaComponent implements OnInit {
 
-  public appVersion = "beta 2020.0606";
+  public appVersion = "Under Construction, stay tuned!";
   public isActive:any = {
     'trans': false,
     'show': false
