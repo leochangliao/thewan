@@ -2,7 +2,7 @@ img {
     width: 100%;
 }
 .t-btn {
-    transition: all 1s ease;
+    transition: all .5s ease;
     cursor: pointer;
     position: fixed;
     top: 10px;
@@ -10,12 +10,14 @@ img {
     width: 50px;
     height: 50px;
     opacity: .7;
-    background-color: rgba(255,255,255, .5);
+    background-color: rgba(255,255,255, .9);
     border-radius: 50%;
     padding: 5px;
     &:hover {
         opacity: 1;
-        background-color: rgba(255,255,255, .8);
+        background-color: rgba(255,255,255, 1);
+        width: 60px;
+        height: 60px;
     }
 }
 .t-overlay {
