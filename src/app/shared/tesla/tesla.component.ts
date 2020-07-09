@@ -21,6 +21,7 @@ export class TeslaComponent implements OnInit {
   public start() {
     this.isActive.trans = true;
     this.isActive.show = true;
+    window.document.body.style.overflow = "hidden";
     setTimeout(() => {
       this.showApp = true;
     },200);
@@ -29,9 +30,9 @@ export class TeslaComponent implements OnInit {
   public end() {    
     this.showApp = false;
     this.isActive.trans = false;
+    window.document.body.style.overflow = "auto";
     setTimeout(() => {
       this.isActive.show = false;
     },1000);
   }
-
 }

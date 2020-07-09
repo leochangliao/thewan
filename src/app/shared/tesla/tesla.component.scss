@@ -21,6 +21,8 @@ img {
     }
 }
 .t-overlay {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
     z-index: 99999999;
     visibility: hidden;
     position: fixed;
@@ -44,7 +46,7 @@ img {
     }
     .t-app {
         color: #ccc;
-        position:fixed;
+        position: absolute;
         left: 50%;
         top: -800px;
         margin-left: - 175px;
