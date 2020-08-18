@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
 
+import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-tesla',
   templateUrl: './tesla.component.html',
@@ -16,9 +16,26 @@ export class TeslaComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.renderButton();
-  }
+    this.renderButton()
 
+  }
+  public onSuccess(googleUser) {
+    console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+  }
+  public onFailure(error) {
+    console.log(error);
+  }
+  public renderButton() {
+    window['gapi'].signin2.render('my-signin2', {
+      'scope': 'profile email',
+      'width': 300,
+      'height': 50,
+      'longtitle': true,
+      'theme': 'dark',
+      'onsuccess': this.onSuccess,
+      'onfailure': this.onFailure
+    });
+  }
   public start() {
     this.isActive.trans = true;
     this.isActive.show = true;
@@ -35,23 +52,5 @@ export class TeslaComponent implements OnInit {
     setTimeout(() => {
       this.isActive.show = false;
     },1000);
-  }
-
-  public onSuccess(googleUser) {
-    console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-  }
-  public onFailure(error) {
-    console.log(error);
-  }
-  public renderButton() {
-    gapi.signin2.render('my-signin2', {
-      'scope': 'profile email',
-      'width': 300,
-      'height': 50,
-      'longtitle': true,
-      'theme': 'dark',
-      'onsuccess': this.onSuccess,
-      'onfailure': this.onFailure
-    });
   }
 }
