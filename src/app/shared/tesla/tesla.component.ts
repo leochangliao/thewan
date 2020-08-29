@@ -16,26 +16,9 @@ export class TeslaComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.renderButton()
 
   }
-  public onSuccess(googleUser) {
-    console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-  }
-  public onFailure(error) {
-    console.log(error);
-  }
-  public renderButton() {
-    window['gapi'].signin2.render('my-signin2', {
-      'scope': 'profile email',
-      'width': 300,
-      'height': 50,
-      'longtitle': true,
-      'theme': 'dark',
-      'onsuccess': this.onSuccess,
-      'onfailure': this.onFailure
-    });
-  }
+
   public start() {
     this.isActive.trans = true;
     this.isActive.show = true;
